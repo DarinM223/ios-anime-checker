@@ -7,13 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		930AC6FF1A4F8C2100A9D4BC /* AnimeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930AC6FE1A4F8C2100A9D4BC /* AnimeListCell.swift */; };
+		930AC7031A500A7F00A9D4BC /* AnimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930AC7021A500A7F00A9D4BC /* AnimeViewController.swift */; };
+		930AC7071A5017EA00A9D4BC /* FindAnimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930AC7061A5017EA00A9D4BC /* FindAnimeTableViewController.swift */; };
+		930AC7091A5150E300A9D4BC /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930AC7081A5150E300A9D4BC /* Log.swift */; };
+		93135DD61A4B953A0004A050 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93135DD51A4B953A0004A050 /* FeedTableViewController.swift */; };
+		93135DD81A4B96EC0004A050 /* HummingbirdAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93135DD71A4B96EC0004A050 /* HummingbirdAPITest.swift */; };
 		93305A271A48ED9500D6E8B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93305A261A48ED9500D6E8B3 /* AppDelegate.swift */; };
 		93305A2A1A48ED9500D6E8B3 /* animelist_checker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93305A281A48ED9500D6E8B3 /* animelist_checker.xcdatamodeld */; };
-		93305A2C1A48ED9500D6E8B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93305A2B1A48ED9500D6E8B3 /* ViewController.swift */; };
 		93305A2F1A48ED9500D6E8B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93305A2D1A48ED9500D6E8B3 /* Main.storyboard */; };
 		93305A311A48ED9500D6E8B3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93305A301A48ED9500D6E8B3 /* Images.xcassets */; };
 		93305A341A48ED9500D6E8B3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93305A321A48ED9500D6E8B3 /* LaunchScreen.xib */; };
 		93305A401A48ED9500D6E8B3 /* animelist_checkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93305A3F1A48ED9500D6E8B3 /* animelist_checkerTests.swift */; };
+		93305A4A1A48F23300D6E8B3 /* jesus_tatsuya.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 93305A491A48F23300D6E8B3 /* jesus_tatsuya.jpg */; };
+		938B879D1A4A8FBC00F1CB4A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938B879C1A4A8FBC00F1CB4A /* LoginViewController.swift */; };
+		938B879F1A4A926700F1CB4A /* AnimeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938B879E1A4A926700F1CB4A /* AnimeListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,17 +35,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		930AC6FE1A4F8C2100A9D4BC /* AnimeListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimeListCell.swift; sourceTree = "<group>"; };
+		930AC7021A500A7F00A9D4BC /* AnimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimeViewController.swift; sourceTree = "<group>"; };
+		930AC7061A5017EA00A9D4BC /* FindAnimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindAnimeTableViewController.swift; sourceTree = "<group>"; };
+		930AC7081A5150E300A9D4BC /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		93135DD51A4B953A0004A050 /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
+		93135DD71A4B96EC0004A050 /* HummingbirdAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HummingbirdAPITest.swift; sourceTree = "<group>"; };
 		93305A211A48ED9500D6E8B3 /* animelist-checker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "animelist-checker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93305A251A48ED9500D6E8B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93305A261A48ED9500D6E8B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93305A291A48ED9500D6E8B3 /* animelist_checker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = animelist_checker.xcdatamodel; sourceTree = "<group>"; };
-		93305A2B1A48ED9500D6E8B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		93305A2E1A48ED9500D6E8B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93305A301A48ED9500D6E8B3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		93305A331A48ED9500D6E8B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		93305A391A48ED9500D6E8B3 /* animelist-checkerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "animelist-checkerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93305A3E1A48ED9500D6E8B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93305A3F1A48ED9500D6E8B3 /* animelist_checkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = animelist_checkerTests.swift; sourceTree = "<group>"; };
+		93305A491A48F23300D6E8B3 /* jesus_tatsuya.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = jesus_tatsuya.jpg; path = ../../../../../Downloads/pictures/jesus_tatsuya.jpg; sourceTree = "<group>"; };
+		938B879C1A4A8FBC00F1CB4A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
+		938B879E1A4A926700F1CB4A /* AnimeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimeListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +95,17 @@
 		93305A231A48ED9500D6E8B3 /* animelist-checker */ = {
 			isa = PBXGroup;
 			children = (
+				938B879C1A4A8FBC00F1CB4A /* LoginViewController.swift */,
+				93305A491A48F23300D6E8B3 /* jesus_tatsuya.jpg */,
+				930AC7081A5150E300A9D4BC /* Log.swift */,
+				93135DD51A4B953A0004A050 /* FeedTableViewController.swift */,
+				930AC6FE1A4F8C2100A9D4BC /* AnimeListCell.swift */,
+				930AC7061A5017EA00A9D4BC /* FindAnimeTableViewController.swift */,
+				930AC7021A500A7F00A9D4BC /* AnimeViewController.swift */,
+				93135DD71A4B96EC0004A050 /* HummingbirdAPITest.swift */,
 				93305A261A48ED9500D6E8B3 /* AppDelegate.swift */,
-				93305A2B1A48ED9500D6E8B3 /* ViewController.swift */,
 				93305A2D1A48ED9500D6E8B3 /* Main.storyboard */,
+				938B879E1A4A926700F1CB4A /* AnimeListTableViewController.swift */,
 				93305A301A48ED9500D6E8B3 /* Images.xcassets */,
 				93305A321A48ED9500D6E8B3 /* LaunchScreen.xib */,
 				93305A281A48ED9500D6E8B3 /* animelist_checker.xcdatamodeld */,
@@ -195,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93305A4A1A48F23300D6E8B3 /* jesus_tatsuya.jpg in Resources */,
 				93305A2F1A48ED9500D6E8B3 /* Main.storyboard in Resources */,
 				93305A341A48ED9500D6E8B3 /* LaunchScreen.xib in Resources */,
 				93305A311A48ED9500D6E8B3 /* Images.xcassets in Resources */,
@@ -215,9 +240,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93305A2C1A48ED9500D6E8B3 /* ViewController.swift in Sources */,
+				938B879D1A4A8FBC00F1CB4A /* LoginViewController.swift in Sources */,
+				93135DD81A4B96EC0004A050 /* HummingbirdAPITest.swift in Sources */,
+				930AC7091A5150E300A9D4BC /* Log.swift in Sources */,
 				93305A2A1A48ED9500D6E8B3 /* animelist_checker.xcdatamodeld in Sources */,
+				93135DD61A4B953A0004A050 /* FeedTableViewController.swift in Sources */,
+				938B879F1A4A926700F1CB4A /* AnimeListTableViewController.swift in Sources */,
+				930AC7031A500A7F00A9D4BC /* AnimeViewController.swift in Sources */,
+				930AC6FF1A4F8C2100A9D4BC /* AnimeListCell.swift in Sources */,
 				93305A271A48ED9500D6E8B3 /* AppDelegate.swift in Sources */,
+				930AC7071A5017EA00A9D4BC /* FindAnimeTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +441,7 @@
 				93305A451A48ED9500D6E8B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		93305A461A48ED9500D6E8B3 /* Build configuration list for PBXNativeTarget "animelist-checkerTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +450,7 @@
 				93305A481A48ED9500D6E8B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
