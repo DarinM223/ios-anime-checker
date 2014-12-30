@@ -23,8 +23,9 @@
 		93305A341A48ED9500D6E8B3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93305A321A48ED9500D6E8B3 /* LaunchScreen.xib */; };
 		93305A401A48ED9500D6E8B3 /* animelist_checkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93305A3F1A48ED9500D6E8B3 /* animelist_checkerTests.swift */; };
 		93305A4A1A48F23300D6E8B3 /* jesus_tatsuya.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 93305A491A48F23300D6E8B3 /* jesus_tatsuya.jpg */; };
-		938B879D1A4A8FBC00F1CB4A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938B879C1A4A8FBC00F1CB4A /* LoginViewController.swift */; };
 		938B879F1A4A926700F1CB4A /* AnimeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938B879E1A4A926700F1CB4A /* AnimeListTableViewController.swift */; };
+		939C52F91A5353AF00DFE0E1 /* CheckLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939C52F81A5353AF00DFE0E1 /* CheckLoginViewController.swift */; };
+		93B99EB91A527892006DBBDB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B99EB81A527892006DBBDB /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +59,9 @@
 		93305A3E1A48ED9500D6E8B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93305A3F1A48ED9500D6E8B3 /* animelist_checkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = animelist_checkerTests.swift; sourceTree = "<group>"; };
 		93305A491A48F23300D6E8B3 /* jesus_tatsuya.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = jesus_tatsuya.jpg; path = ../../../../../Downloads/pictures/jesus_tatsuya.jpg; sourceTree = "<group>"; };
-		938B879C1A4A8FBC00F1CB4A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
 		938B879E1A4A926700F1CB4A /* AnimeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimeListTableViewController.swift; sourceTree = "<group>"; };
+		939C52F81A5353AF00DFE0E1 /* CheckLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckLoginViewController.swift; sourceTree = "<group>"; };
+		93B99EB81A527892006DBBDB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,12 +103,12 @@
 		93305A231A48ED9500D6E8B3 /* animelist-checker */ = {
 			isa = PBXGroup;
 			children = (
-				938B879C1A4A8FBC00F1CB4A /* LoginViewController.swift */,
 				93305A491A48F23300D6E8B3 /* jesus_tatsuya.jpg */,
 				930AC7081A5150E300A9D4BC /* Log.swift */,
 				93135DD51A4B953A0004A050 /* FeedTableViewController.swift */,
 				930AC6FE1A4F8C2100A9D4BC /* AnimeListCell.swift */,
 				93220E0B1A523AC7008271AA /* MainViewController.swift */,
+				939C52F81A5353AF00DFE0E1 /* CheckLoginViewController.swift */,
 				93220E071A51AEDB008271AA /* AuthenticationToken.swift */,
 				93220E091A523194008271AA /* Keychain.swift */,
 				930AC7061A5017EA00A9D4BC /* FindAnimeTableViewController.swift */,
@@ -114,6 +116,7 @@
 				93135DD71A4B96EC0004A050 /* HummingbirdAPITest.swift */,
 				93305A261A48ED9500D6E8B3 /* AppDelegate.swift */,
 				93305A2D1A48ED9500D6E8B3 /* Main.storyboard */,
+				93B99EB81A527892006DBBDB /* LoginViewController.swift */,
 				938B879E1A4A926700F1CB4A /* AnimeListTableViewController.swift */,
 				93305A301A48ED9500D6E8B3 /* Images.xcassets */,
 				93305A321A48ED9500D6E8B3 /* LaunchScreen.xib */,
@@ -249,7 +252,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				938B879D1A4A8FBC00F1CB4A /* LoginViewController.swift in Sources */,
 				93220E0C1A523AC7008271AA /* MainViewController.swift in Sources */,
 				93135DD81A4B96EC0004A050 /* HummingbirdAPITest.swift in Sources */,
 				930AC7091A5150E300A9D4BC /* Log.swift in Sources */,
@@ -261,7 +263,9 @@
 				930AC6FF1A4F8C2100A9D4BC /* AnimeListCell.swift in Sources */,
 				93220E081A51AEDB008271AA /* AuthenticationToken.swift in Sources */,
 				93305A271A48ED9500D6E8B3 /* AppDelegate.swift in Sources */,
+				93B99EB91A527892006DBBDB /* LoginViewController.swift in Sources */,
 				930AC7071A5017EA00A9D4BC /* FindAnimeTableViewController.swift in Sources */,
+				939C52F91A5353AF00DFE0E1 /* CheckLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

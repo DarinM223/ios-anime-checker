@@ -11,7 +11,7 @@ import UIKit
 
 class AnimeListTableViewController: UITableViewController {
     
-    var username: String = "darin_minamoto"
+    var username: String = ""
     var fixture_data: NSArray? = nil
     var window:UIWindow?
     var activityView: UIView?
@@ -53,6 +53,7 @@ class AnimeListTableViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.navigationController?.navigationBarHidden = false
     }
     
     @IBAction func onRefreshClicked(sender: AnyObject) {
@@ -149,8 +150,6 @@ class AnimeListTableViewController: UITableViewController {
             var item = fixture_data?[indexPath.row] as NSDictionary
             var anime = item["anime"] as NSDictionary
             var title = anime["title"] as NSString
-            // var numEpisodesWatched = String(item["episodes_watched"] as Int)
-            println(title)
             destViewController.navigationItem.title = title
         } else if segue.identifier == "showAdd" {
             

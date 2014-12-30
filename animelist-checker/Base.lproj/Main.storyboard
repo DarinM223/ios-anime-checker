@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9sO-LS-9iI">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="HHN-I2-Ph7">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="9sO-LS-9iI" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="S3D-7d-SGu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="tiC-5W-89r" kind="relationship" relationship="rootViewController" id="RD0-uY-O76"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8bw-NN-5hl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1193" y="364"/>
+        </scene>
+        <!--Check Login View Controller-->
         <scene sceneID="67e-HD-gtL">
             <objects>
-                <viewController id="tiC-5W-89r" sceneMemberID="viewController">
+                <viewController id="tiC-5W-89r" customClass="CheckLoginViewController" customModule="animelist_checker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8j0-Pq-PPV"/>
                         <viewControllerLayoutGuide type="bottom" id="Cpd-RV-f1g"/>
@@ -18,11 +35,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Gt5-LF-5xB"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lu4-jm-EiM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-996" y="320"/>
+            <point key="canvasLocation" x="-823" y="364"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -67,7 +85,7 @@
                                     <color key="titleShadowColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="P1e-ae-2AM" kind="show" id="ccl-Z5-ye3"/>
+                                    <action selector="onLoginClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bMi-wu-soz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -84,16 +102,21 @@
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="kq9-Ye-DSc" secondAttribute="bottom" constant="194" id="kqT-rb-xhN"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="p5k-tQ-5lV"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="passwordField" destination="aFd-jK-nsO" id="cGK-dm-uaf"/>
+                        <outlet property="usernameField" destination="c1h-FQ-2MW" id="n2W-UW-6EY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-625" y="320"/>
+            <point key="canvasLocation" x="-394" y="364"/>
         </scene>
         <!--Anime List-->
         <scene sceneID="O5Y-nl-LKV">
             <objects>
-                <navigationController id="Kfu-64-waD" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AnimeListNavigation" id="Kfu-64-waD" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Anime List" id="zZG-83-ZFV"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="efT-bJ-HRF">
@@ -106,7 +129,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6na-9u-PRq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-312" y="996"/>
+            <point key="canvasLocation" x="148" y="1040"/>
         </scene>
         <!--Anime list-->
         <scene sceneID="Jaq-F8-r2Y">
@@ -175,7 +198,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c5G-dX-F5a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="63" y="996"/>
+            <point key="canvasLocation" x="575" y="1184"/>
         </scene>
         <!--Find anime-->
         <scene sceneID="ApA-PT-oWj">
@@ -256,7 +279,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="476" y="563"/>
+            <point key="canvasLocation" x="1044" y="607"/>
         </scene>
         <!--Anime Detail-->
         <scene sceneID="Jla-Jw-LHv">
@@ -286,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="raq-ca-IXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="485" y="1242"/>
+            <point key="canvasLocation" x="1053" y="1306"/>
         </scene>
         <!--Feed-->
         <scene sceneID="32i-v5-Ikz">
@@ -304,7 +327,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vAy-Pg-6Nh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-312" y="-325"/>
+            <point key="canvasLocation" x="8" y="-317"/>
         </scene>
         <!--Activity feed-->
         <scene sceneID="OsF-d8-oZN">
@@ -332,12 +355,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gov-Wu-Qy4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131" y="-349"/>
+            <point key="canvasLocation" x="584" y="-333"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ZL6-U9-BsL">
             <objects>
-                <tabBarController id="P1e-ae-2AM" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBar" id="P1e-ae-2AM" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="44X-lq-Zbd"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -353,7 +376,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JE9-W1-6Vx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-269" y="320"/>
+            <point key="canvasLocation" x="26" y="364"/>
         </scene>
     </scenes>
 </document>
