@@ -90,14 +90,19 @@ class AnimeListTableViewController: UITableViewController {
         var item = fixture_data?[indexPath.row] as NSDictionary
         var anime = item["anime"] as NSDictionary
         var title = anime["title"] as NSString
-        var numEpisodesWatched = String(item["episodes_watched"] as Int)
+        var numEpisodesWatched = item["episodes_watched"] as Int
         
         cell.TitleLabel.text = title
         if let totalEpisodes = anime["episode_count"] as? Int {
             var totalEpisodesText = String(totalEpisodes)
-            cell.NumAnimeLabel.text = numEpisodesWatched + "/" + totalEpisodesText
+            cell.NumAnimeLabel.text = String(numEpisodesWatched) + "/" + totalEpisodesText
+            if numEpisodesWatched < totalEpisodes {
+                cell.IncrementAnimeButton.hidden = false
+            } else {
+                cell.IncrementAnimeButton.hidden = true
+            }
         } else {
-            cell.NumAnimeLabel.text = numEpisodesWatched + "/_"
+            cell.NumAnimeLabel.text = String(numEpisodesWatched) + "/_"
         }
         
         return cell

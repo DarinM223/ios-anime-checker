@@ -175,6 +175,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="IncrementAnimeButton" destination="jU4-8x-Q1Q" id="Nhy-dD-KnG"/>
                                     <outlet property="NumAnimeLabel" destination="fD8-lB-LN2" id="iB9-WJ-5pz"/>
                                     <outlet property="TitleLabel" destination="Iq8-SW-ecN" id="oRD-WZ-ojK"/>
                                     <segue destination="ubY-zs-c8Q" kind="show" identifier="showAnime" id="wac-fp-iHh"/>
@@ -199,6 +200,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c5G-dX-F5a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="575" y="1184"/>
+        </scene>
+        <!--Find anime-->
+        <scene sceneID="goR-1x-v1d">
+            <objects>
+                <navigationController id="fSv-2E-4A8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Find anime" id="iQg-kr-gm3"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="W6n-H8-SvA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2vp-wt-QF6" kind="relationship" relationship="rootViewController" id="4xi-NN-O0R"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hs4-um-suc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="487" y="364"/>
         </scene>
         <!--Find anime-->
         <scene sceneID="ApA-PT-oWj">
@@ -262,6 +281,7 @@
                             <outlet property="delegate" destination="2vp-wt-QF6" id="6bj-8C-yBI"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Find anime" id="BYp-ap-Npy"/>
                     <navigationItem key="navigationItem" title="Find anime" id="qEL-hG-ca8"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
@@ -279,7 +299,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1044" y="607"/>
+            <point key="canvasLocation" x="865" y="364"/>
         </scene>
         <!--Anime Detail-->
         <scene sceneID="Jla-Jw-LHv">
@@ -327,7 +347,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vAy-Pg-6Nh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8" y="-317"/>
+            <point key="canvasLocation" x="50" y="-310"/>
         </scene>
         <!--Activity feed-->
         <scene sceneID="OsF-d8-oZN">
@@ -355,7 +375,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gov-Wu-Qy4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="584" y="-333"/>
+            <point key="canvasLocation" x="493" y="-310"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ZL6-U9-BsL">
@@ -372,6 +392,7 @@
                     <connections>
                         <segue destination="Kfu-64-waD" kind="relationship" relationship="viewControllers" id="F0K-eq-O0Y"/>
                         <segue destination="XOg-eJ-Gw7" kind="relationship" relationship="viewControllers" id="zxt-Hj-Ekb"/>
+                        <segue destination="fSv-2E-4A8" kind="relationship" relationship="viewControllers" id="9On-gA-yJc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JE9-W1-6Vx" userLabel="First Responder" sceneMemberID="firstResponder"/>

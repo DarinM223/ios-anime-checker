@@ -11,4 +11,5 @@ import UIKit
 class AnimeListCell: UITableViewCell {
     @IBOutlet weak var TitleLabel: UILabel!
     @IBOutlet weak var NumAnimeLabel: UILabel!
+    @IBOutlet weak var IncrementAnimeButton: UIButton!
 }
