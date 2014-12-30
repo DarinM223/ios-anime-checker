@@ -13,6 +13,9 @@
 		930AC7091A5150E300A9D4BC /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930AC7081A5150E300A9D4BC /* Log.swift */; };
 		93135DD61A4B953A0004A050 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93135DD51A4B953A0004A050 /* FeedTableViewController.swift */; };
 		93135DD81A4B96EC0004A050 /* HummingbirdAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93135DD71A4B96EC0004A050 /* HummingbirdAPITest.swift */; };
+		93220E081A51AEDB008271AA /* AuthenticationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93220E071A51AEDB008271AA /* AuthenticationToken.swift */; };
+		93220E0A1A523194008271AA /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93220E091A523194008271AA /* Keychain.swift */; };
+		93220E0C1A523AC7008271AA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93220E0B1A523AC7008271AA /* MainViewController.swift */; };
 		93305A271A48ED9500D6E8B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93305A261A48ED9500D6E8B3 /* AppDelegate.swift */; };
 		93305A2A1A48ED9500D6E8B3 /* animelist_checker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93305A281A48ED9500D6E8B3 /* animelist_checker.xcdatamodeld */; };
 		93305A2F1A48ED9500D6E8B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93305A2D1A48ED9500D6E8B3 /* Main.storyboard */; };
@@ -41,6 +44,9 @@
 		930AC7081A5150E300A9D4BC /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		93135DD51A4B953A0004A050 /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		93135DD71A4B96EC0004A050 /* HummingbirdAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HummingbirdAPITest.swift; sourceTree = "<group>"; };
+		93220E071A51AEDB008271AA /* AuthenticationToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationToken.swift; sourceTree = "<group>"; };
+		93220E091A523194008271AA /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		93220E0B1A523AC7008271AA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		93305A211A48ED9500D6E8B3 /* animelist-checker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "animelist-checker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93305A251A48ED9500D6E8B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93305A261A48ED9500D6E8B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +106,9 @@
 				930AC7081A5150E300A9D4BC /* Log.swift */,
 				93135DD51A4B953A0004A050 /* FeedTableViewController.swift */,
 				930AC6FE1A4F8C2100A9D4BC /* AnimeListCell.swift */,
+				93220E0B1A523AC7008271AA /* MainViewController.swift */,
+				93220E071A51AEDB008271AA /* AuthenticationToken.swift */,
+				93220E091A523194008271AA /* Keychain.swift */,
 				930AC7061A5017EA00A9D4BC /* FindAnimeTableViewController.swift */,
 				930AC7021A500A7F00A9D4BC /* AnimeViewController.swift */,
 				93135DD71A4B96EC0004A050 /* HummingbirdAPITest.swift */,
@@ -241,13 +250,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				938B879D1A4A8FBC00F1CB4A /* LoginViewController.swift in Sources */,
+				93220E0C1A523AC7008271AA /* MainViewController.swift in Sources */,
 				93135DD81A4B96EC0004A050 /* HummingbirdAPITest.swift in Sources */,
 				930AC7091A5150E300A9D4BC /* Log.swift in Sources */,
 				93305A2A1A48ED9500D6E8B3 /* animelist_checker.xcdatamodeld in Sources */,
 				93135DD61A4B953A0004A050 /* FeedTableViewController.swift in Sources */,
+				93220E0A1A523194008271AA /* Keychain.swift in Sources */,
 				938B879F1A4A926700F1CB4A /* AnimeListTableViewController.swift in Sources */,
 				930AC7031A500A7F00A9D4BC /* AnimeViewController.swift in Sources */,
 				930AC6FF1A4F8C2100A9D4BC /* AnimeListCell.swift in Sources */,
+				93220E081A51AEDB008271AA /* AuthenticationToken.swift in Sources */,
 				93305A271A48ED9500D6E8B3 /* AppDelegate.swift in Sources */,
 				930AC7071A5017EA00A9D4BC /* FindAnimeTableViewController.swift in Sources */,
 			);

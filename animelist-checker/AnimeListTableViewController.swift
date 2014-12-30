@@ -11,19 +11,52 @@ import UIKit
 
 class AnimeListTableViewController: UITableViewController {
     
+    var username: String = "darin_minamoto"
     var fixture_data: NSArray? = nil
+    var window:UIWindow?
+    var activityView: UIView?
+    
+    func refreshAnimeList() {
+        window?.addSubview(activityView!)
+        self.activityView?.subviews[0].startAnimating()
+        HummingbirdAPI.getLibrary(self.username){result in
+            self.fixture_data = result
+            self.tableView.reloadData()
+            self.activityView?.subviews[0].stopAnimating()
+            self.activityView?.removeFromSuperview()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var delegate = UIApplication.sharedApplication().delegate
+        window = delegate?.window as UIWindow!!
+        
+        if let window = window as UIWindow! {
+            activityView = UIView(frame: CGRectMake(0, 0, window.bounds.size.width, window.bounds.size.height))
+            activityView?.backgroundColor = UIColor.blackColor()
+            activityView?.alpha = 0.5
+            
+            var spinner = UIActivityIndicatorView(frame: CGRectMake(window.bounds.width/2-12, window.bounds.height/2-12, 24, 24))
+            spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
+            spinner.color = UIColor.grayColor()
+            spinner.autoresizingMask = (UIViewAutoresizing.FlexibleLeftMargin |
+                UIViewAutoresizing.FlexibleRightMargin |
+                UIViewAutoresizing.FlexibleTopMargin |
+                UIViewAutoresizing.FlexibleBottomMargin)
+            
+            activityView?.addSubview(spinner)
+            self.refreshAnimeList()
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        HummingbirdAPI.getLibrary("darin_minamoto"){result in
-            self.fixture_data = result
-            self.tableView.reloadData()
-        }
+    }
+    
+    @IBAction func onRefreshClicked(sender: AnyObject) {
+        self.refreshAnimeList()
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,15 +102,12 @@ class AnimeListTableViewController: UITableViewController {
         return cell
     }
 
-    /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return NO if you do not want the specified item to be editable.
         return true
     }
-    */
 
-    /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
@@ -87,7 +117,6 @@ class AnimeListTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
     
     /*
     // Override to support rearranging the table view.

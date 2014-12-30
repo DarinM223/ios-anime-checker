@@ -116,7 +116,7 @@ public class HummingbirdAPI {
         if let username = _username as NSString! {
             postString = "username=" + username + "&password=" + password
         } else if let email = _email as NSString! {
-            postString = "username=" + email + "&password=" + password
+            postString = "email=" + email + "&password=" + password
         } else {
             println("Error!")
             return
