@@ -39,6 +39,10 @@ public class AuthenticationToken {
         }
     }
     
+    class func removeAuthToken() -> Bool {
+        return Keychain.delete("auth_token") && Keychain.delete("username")
+    }
+    
     /// gets username from keychain
     /// :return: the username or nil if there is none
     class func getUsername() -> String? {

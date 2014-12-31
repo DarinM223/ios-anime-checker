@@ -15,6 +15,7 @@ class AnimeListTableViewController: UITableViewController {
     var fixture_data: NSArray? = nil
     var window:UIWindow?
     var activityView: UIView?
+    var mainNavController: UINavigationController?
     
     func refreshAnimeList() {
         window?.addSubview(activityView!)
@@ -156,8 +157,6 @@ class AnimeListTableViewController: UITableViewController {
             var anime = item["anime"] as NSDictionary
             var title = anime["title"] as NSString
             destViewController.navigationItem.title = title
-        } else if segue.identifier == "showAdd" {
-            
         }
     }
 }

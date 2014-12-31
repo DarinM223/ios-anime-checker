@@ -299,7 +299,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="865" y="364"/>
+            <point key="canvasLocation" x="967" y="364"/>
         </scene>
         <!--Anime Detail-->
         <scene sceneID="Jla-Jw-LHv">
@@ -323,7 +323,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Anime Detail" id="ZWG-Lw-Aya">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ztM-z6-Bex"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ztM-z6-Bex">
+                            <connections>
+                                <action selector="onSaveClicked:" destination="ubY-zs-c8Q" id="HOW-zN-25w"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
@@ -331,11 +335,11 @@
             </objects>
             <point key="canvasLocation" x="1053" y="1306"/>
         </scene>
-        <!--Feed-->
+        <!--Account-->
         <scene sceneID="32i-v5-Ikz">
             <objects>
                 <navigationController id="XOg-eJ-Gw7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" id="yLE-Q6-ahb"/>
+                    <tabBarItem key="tabBarItem" title="Account" id="yLE-Q6-ahb"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YR7-Ac-aAH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -370,7 +374,13 @@
                             <outlet property="delegate" destination="jDa-CP-Ja2" id="rUv-kA-Ys2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Activity feed" id="kfK-Ko-B8b"/>
+                    <navigationItem key="navigationItem" title="Activity feed" id="kfK-Ko-B8b">
+                        <barButtonItem key="leftBarButtonItem" title="Sign out" id="yEe-fI-lbl">
+                            <connections>
+                                <action selector="onSignOutClicked:" destination="jDa-CP-Ja2" id="tNB-S0-6EI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gov-Wu-Qy4" userLabel="First Responder" sceneMemberID="firstResponder"/>

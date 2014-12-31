@@ -9,11 +9,8 @@
 import UIKit
 
 class CheckLoginViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    func checkLogin() {
         var data = AuthenticationToken.getAuthToken()
         if data == nil {
             // go to login view
@@ -25,12 +22,30 @@ class CheckLoginViewController: UIViewController {
             
             var tabViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TabBar") as UITabBarController
             var animeNavViewController = tabViewController.viewControllers?[0] as UINavigationController
+            var accountNavViewController = tabViewController.viewControllers?[1] as UINavigationController
+            
             var animeListViewController = animeNavViewController.viewControllers[0] as AnimeListTableViewController
+            var accountViewController = accountNavViewController.viewControllers[0] as FeedTableViewController
+            
+            accountViewController.mainNavController = self.navigationController
+            animeListViewController.mainNavController = self.navigationController
             animeListViewController.username = username!
             
             tabViewController.selectedIndex = 0
             self.navigationController?.pushViewController(tabViewController, animated: false)
         }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        self.checkLogin()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.checkLogin()
     }
 
     override func didReceiveMemoryWarning() {

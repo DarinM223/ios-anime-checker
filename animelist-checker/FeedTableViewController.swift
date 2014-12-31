@@ -9,6 +9,8 @@
 import UIKit
 
 class FeedTableViewController: UITableViewController {
+    
+    var mainNavController:UINavigationController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +41,14 @@ class FeedTableViewController: UITableViewController {
         return 0
     }
 
+    @IBAction func onSignOutClicked(sender: AnyObject) {
+        var result = AuthenticationToken.removeAuthToken()
+        if result == true {
+            self.mainNavController?.popToRootViewControllerAnimated(true)
+        } else {
+            
+        }
+    }
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell

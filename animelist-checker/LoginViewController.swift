@@ -29,9 +29,13 @@ class LoginViewController: UIViewController {
             if let auth_token:String = result {
                 var tabViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TabBar") as UITabBarController
                 var animeNavViewController = tabViewController.viewControllers?[0] as UINavigationController
+                var accountNavViewController = tabViewController.viewControllers?[1] as UINavigationController
                 var animeListViewController = animeNavViewController.viewControllers[0] as AnimeListTableViewController
-                animeListViewController.username = self.usernameField.text
+                var accountViewController = accountNavViewController.viewControllers[0] as FeedTableViewController
                 
+                accountViewController.mainNavController = self.navigationController
+                animeListViewController.mainNavController = self.navigationController
+                animeListViewController.username = self.usernameField.text
                 tabViewController.selectedIndex = 0
                 self.navigationController?.pushViewController(tabViewController, animated: true)
             } else {

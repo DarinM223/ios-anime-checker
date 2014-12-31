@@ -20,8 +20,13 @@ class AnimeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
+    @IBAction func onSaveClicked(sender: AnyObject) {
+        var size:Int = self.navigationController?.viewControllers.count as Int!
+        var animeListController = self.navigationController?.viewControllers[size-2] as AnimeListTableViewController
+        animeListController.refreshAnimeList()
+        self.navigationController?.popViewControllerAnimated(true)
+    }
     /*
     // MARK: - Navigation
 
