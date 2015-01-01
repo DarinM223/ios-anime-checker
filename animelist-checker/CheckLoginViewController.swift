@@ -25,11 +25,12 @@ class CheckLoginViewController: UIViewController {
             var accountNavViewController = tabViewController.viewControllers?[1] as UINavigationController
             
             var animeListViewController = animeNavViewController.viewControllers[0] as AnimeListTableViewController
-            var accountViewController = accountNavViewController.viewControllers[0] as FeedTableViewController
+            var accountViewController = accountNavViewController.viewControllers[0] as AccountViewController
             
             accountViewController.mainNavController = self.navigationController
             animeListViewController.mainNavController = self.navigationController
             animeListViewController.username = username!
+            accountViewController.username = username!
             
             tabViewController.selectedIndex = 0
             self.navigationController?.pushViewController(tabViewController, animated: false)

@@ -31,11 +31,12 @@ class LoginViewController: UIViewController {
                 var animeNavViewController = tabViewController.viewControllers?[0] as UINavigationController
                 var accountNavViewController = tabViewController.viewControllers?[1] as UINavigationController
                 var animeListViewController = animeNavViewController.viewControllers[0] as AnimeListTableViewController
-                var accountViewController = accountNavViewController.viewControllers[0] as FeedTableViewController
+                var accountViewController = accountNavViewController.viewControllers[0] as AccountViewController
                 
                 accountViewController.mainNavController = self.navigationController
                 animeListViewController.mainNavController = self.navigationController
                 animeListViewController.username = self.usernameField.text
+                accountViewController.username = self.usernameField.text
                 tabViewController.selectedIndex = 0
                 self.navigationController?.pushViewController(tabViewController, animated: true)
             } else {

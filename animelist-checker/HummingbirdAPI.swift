@@ -107,6 +107,30 @@ public class HummingbirdAPI {
         }
     }
     
+    class func getAccountInfo(username: NSString, callback: (NSDictionary?) -> Void) {
+        var url:NSURL! = NSURL(string: "http://hummingbird.me/api/v1/users/" + username)
+        var request = NSMutableURLRequest(URL: url)
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.currentQueue()) {response, maybeData, error in
+            if error != nil {
+                println(error)
+                callback(nil)
+                return
+            }
+            
+            if let data = maybeData {
+                let contents = NSString(data: data, encoding: NSUTF8StringEncoding)
+                var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+                callback(jsonResult)
+                return
+            } else {
+                println(error.localizedDescription)
+                callback(nil)
+                return
+            }
+        }
+    }
+    
     class func authenticate(_username: NSString?, _email: NSString?, password: NSString, callback: (NSString?) -> Void) {
         var postString: NSString
         var url: NSURL! = NSURL(string: "http://hummingbird.me/api/v1/users/authenticate")

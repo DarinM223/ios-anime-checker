@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		930AC7071A5017EA00A9D4BC /* FindAnimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930AC7061A5017EA00A9D4BC /* FindAnimeTableViewController.swift */; };
 		930AC7091A5150E300A9D4BC /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930AC7081A5150E300A9D4BC /* Log.swift */; };
-		93135DD61A4B953A0004A050 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93135DD51A4B953A0004A050 /* FeedTableViewController.swift */; };
-		93135DD81A4B96EC0004A050 /* HummingbirdAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93135DD71A4B96EC0004A050 /* HummingbirdAPITest.swift */; };
+		93135DD81A4B96EC0004A050 /* HummingbirdAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93135DD71A4B96EC0004A050 /* HummingbirdAPI.swift */; };
+		9313DD771A55E36100DB9641 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9313DD761A55E36100DB9641 /* AccountViewController.swift */; };
 		93220E081A51AEDB008271AA /* AuthenticationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93220E071A51AEDB008271AA /* AuthenticationToken.swift */; };
 		93220E0A1A523194008271AA /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93220E091A523194008271AA /* Keychain.swift */; };
 		93220E0C1A523AC7008271AA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93220E0B1A523AC7008271AA /* MainViewController.swift */; };
@@ -41,8 +41,8 @@
 /* Begin PBXFileReference section */
 		930AC7061A5017EA00A9D4BC /* FindAnimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindAnimeTableViewController.swift; sourceTree = "<group>"; };
 		930AC7081A5150E300A9D4BC /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		93135DD51A4B953A0004A050 /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
-		93135DD71A4B96EC0004A050 /* HummingbirdAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HummingbirdAPITest.swift; sourceTree = "<group>"; };
+		93135DD71A4B96EC0004A050 /* HummingbirdAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HummingbirdAPI.swift; sourceTree = "<group>"; };
+		9313DD761A55E36100DB9641 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		93220E071A51AEDB008271AA /* AuthenticationToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationToken.swift; sourceTree = "<group>"; };
 		93220E091A523194008271AA /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		93220E0B1A523AC7008271AA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -105,14 +105,14 @@
 			children = (
 				93305A491A48F23300D6E8B3 /* jesus_tatsuya.jpg */,
 				930AC7081A5150E300A9D4BC /* Log.swift */,
-				93135DD51A4B953A0004A050 /* FeedTableViewController.swift */,
+				9313DD761A55E36100DB9641 /* AccountViewController.swift */,
 				93220E0B1A523AC7008271AA /* MainViewController.swift */,
 				939C52FA1A53620F00DFE0E1 /* AnimeListCell.swift */,
 				939C52F81A5353AF00DFE0E1 /* CheckLoginViewController.swift */,
 				93220E071A51AEDB008271AA /* AuthenticationToken.swift */,
 				93220E091A523194008271AA /* Keychain.swift */,
 				930AC7061A5017EA00A9D4BC /* FindAnimeTableViewController.swift */,
-				93135DD71A4B96EC0004A050 /* HummingbirdAPITest.swift */,
+				93135DD71A4B96EC0004A050 /* HummingbirdAPI.swift */,
 				93305A261A48ED9500D6E8B3 /* AppDelegate.swift */,
 				93305A2D1A48ED9500D6E8B3 /* Main.storyboard */,
 				9391C9C31A537AE600540ACF /* AnimeViewController.swift */,
@@ -253,16 +253,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				93220E0C1A523AC7008271AA /* MainViewController.swift in Sources */,
-				93135DD81A4B96EC0004A050 /* HummingbirdAPITest.swift in Sources */,
+				93135DD81A4B96EC0004A050 /* HummingbirdAPI.swift in Sources */,
 				930AC7091A5150E300A9D4BC /* Log.swift in Sources */,
 				93305A2A1A48ED9500D6E8B3 /* animelist_checker.xcdatamodeld in Sources */,
-				93135DD61A4B953A0004A050 /* FeedTableViewController.swift in Sources */,
 				93220E0A1A523194008271AA /* Keychain.swift in Sources */,
 				938B879F1A4A926700F1CB4A /* AnimeListTableViewController.swift in Sources */,
 				93220E081A51AEDB008271AA /* AuthenticationToken.swift in Sources */,
 				93305A271A48ED9500D6E8B3 /* AppDelegate.swift in Sources */,
 				9391C9C41A537AE600540ACF /* AnimeViewController.swift in Sources */,
 				93B99EB91A527892006DBBDB /* LoginViewController.swift in Sources */,
+				9313DD771A55E36100DB9641 /* AccountViewController.swift in Sources */,
 				930AC7071A5017EA00A9D4BC /* FindAnimeTableViewController.swift in Sources */,
 				939C52FB1A53620F00DFE0E1 /* AnimeListCell.swift in Sources */,
 				939C52F91A5353AF00DFE0E1 /* CheckLoginViewController.swift in Sources */,

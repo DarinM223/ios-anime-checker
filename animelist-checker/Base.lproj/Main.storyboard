@@ -313,11 +313,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cqr-Bs-joF">
-                                <rect key="frame" x="0.0" y="64" width="202" height="207"/>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="23/24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNi-Q3-aWl">
+                                <rect key="frame" x="93" y="121" width="109" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="7Xf-Xh-GKh">
-                                <rect key="frame" x="210" y="353" width="94" height="29"/>
+                                <rect key="frame" x="210" y="117" width="94" height="29"/>
                             </stepper>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -333,7 +336,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="raq-ca-IXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1053" y="1306"/>
+            <point key="canvasLocation" x="967" y="1184"/>
         </scene>
         <!--Account-->
         <scene sceneID="32i-v5-Ikz">
@@ -346,46 +349,43 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="jDa-CP-Ja2" kind="relationship" relationship="rootViewController" id="Eqn-tC-Rpc"/>
+                        <segue destination="SR1-NE-U7N" kind="relationship" relationship="rootViewController" id="kSK-Wq-Dbp"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vAy-Pg-6Nh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="50" y="-310"/>
         </scene>
-        <!--Activity feed-->
-        <scene sceneID="OsF-d8-oZN">
+        <!--My account-->
+        <scene sceneID="L4C-En-nZ9">
             <objects>
-                <tableViewController storyboardIdentifier="ActivityFeed" id="jDa-CP-Ja2" customClass="FeedTableViewController" customModule="animelist_checker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EJY-GN-g4Q">
+                <viewController id="SR1-NE-U7N" customClass="AccountViewController" customModule="animelist_checker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iIk-P8-dyA"/>
+                        <viewControllerLayoutGuide type="bottom" id="1zn-Iy-t65"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GP6-lc-R8R">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ibn-kg-ML1">
+                                <rect key="frame" x="0.0" y="64" width="190" height="190"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JqW-V0-msK">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JqW-V0-msK" id="Huo-4y-bfh">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="jDa-CP-Ja2" id="ySa-sS-LTQ"/>
-                            <outlet property="delegate" destination="jDa-CP-Ja2" id="rUv-kA-Ys2"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Activity feed" id="kfK-Ko-B8b">
-                        <barButtonItem key="leftBarButtonItem" title="Sign out" id="yEe-fI-lbl">
+                    </view>
+                    <navigationItem key="navigationItem" title="My account" id="fZa-dt-Vsi">
+                        <barButtonItem key="leftBarButtonItem" title="Sign out" id="Kfh-H5-gYS">
                             <connections>
-                                <action selector="onSignOutClicked:" destination="jDa-CP-Ja2" id="tNB-S0-6EI"/>
+                                <action selector="onSignOutClicked:" destination="SR1-NE-U7N" id="qPQ-Q0-peN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gov-Wu-Qy4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bmr-RE-E4s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="493" y="-310"/>
+            <point key="canvasLocation" x="458" y="-310"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ZL6-U9-BsL">
