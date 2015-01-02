@@ -8,14 +8,27 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    
+    func dismissKeyboard() {
+        usernameField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        var tap = UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard"))
+        
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
     override func didReceiveMemoryWarning() {
