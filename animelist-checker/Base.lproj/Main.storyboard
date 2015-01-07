@@ -67,18 +67,6 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="8yw-FJ-5wv"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c1h-FQ-2MW" userLabel="UsernameField">
-                                <rect key="frame" x="16" y="191" width="288" height="51"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="51" id="rx3-1W-LTF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="SUJ-Dm-VDF"/>
-                                </connections>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kq9-Ye-DSc">
                                 <rect key="frame" x="16" y="298" width="288" height="76"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
@@ -94,6 +82,18 @@
                                     <action selector="onLoginClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bMi-wu-soz"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c1h-FQ-2MW" userLabel="UsernameField">
+                                <rect key="frame" x="16" y="191" width="288" height="51"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="rx3-1W-LTF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="SUJ-Dm-VDF"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -184,7 +184,6 @@
                                     <outlet property="IncrementAnimeButton" destination="jU4-8x-Q1Q" id="Nhy-dD-KnG"/>
                                     <outlet property="NumAnimeLabel" destination="fD8-lB-LN2" id="iB9-WJ-5pz"/>
                                     <outlet property="TitleLabel" destination="Iq8-SW-ecN" id="oRD-WZ-ojK"/>
-                                    <segue destination="ubY-zs-c8Q" kind="show" identifier="showAnime" id="wac-fp-iHh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -323,7 +322,7 @@
                                 <rect key="frame" x="210" y="72" width="94" height="29"/>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="23/24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNi-Q3-aWl">
-                                <rect key="frame" x="100" y="76" width="88" height="25"/>
+                                <rect key="frame" x="100" y="78" width="88" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -336,6 +335,9 @@
                             </label>
                             <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V1c-42-LYu">
                                 <rect key="frame" x="89" y="123" width="143" height="162"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ubY-zs-c8Q" id="X2O-50-edJ"/>
+                                </connections>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -362,6 +364,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="episodeLabel" destination="PNi-Q3-aWl" id="plu-gK-FfZ"/>
+                        <outlet property="watchingPicker" destination="V1c-42-LYu" id="Man-6V-mR6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="raq-ca-IXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

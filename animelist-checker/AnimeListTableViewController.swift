@@ -17,6 +17,7 @@ class AnimeListTableViewController: UITableViewController {
     var activityView: UIView?
     var mainNavController: UINavigationController?
     
+    
     func refreshAnimeList() {
         window?.addSubview(activityView!)
         self.activityView?.subviews[0].startAnimating()
@@ -125,6 +126,25 @@ class AnimeListTableViewController: UITableViewController {
         }    
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var item = fixture_data?[indexPath.row] as NSDictionary
+        var anime = item["anime"] as NSDictionary
+        var title = anime["title"] as NSString
+        var numEpisodesWatched = item["episodes_watched"] as Int
+        
+        var destViewController = storyboard?.instantiateViewControllerWithIdentifier("AnimeDetail") as AnimeViewController
+        
+        if let totalEpisodes = anime["episode_count"] as? Int {
+            var totalEpisodesText = String(totalEpisodes)
+            destViewController.episodeText = String(numEpisodesWatched) + "/" + totalEpisodesText
+        } else {
+            destViewController.episodeText = String(numEpisodesWatched) + "/_"
+        }
+        destViewController.navigationItem.title = title
+        
+        self.navigationController?.pushViewController(destViewController, animated: true)
+    }
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
@@ -143,20 +163,11 @@ class AnimeListTableViewController: UITableViewController {
     // MARK: - Navigation
     
     
-
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-        
-        if segue.identifier == "showAnime" {
-            var indexPath = self.tableView.indexPathForSelectedRow() as NSIndexPath!
-            var destViewController = segue.destinationViewController as AnimeViewController
-            
-            var item = fixture_data?[indexPath.row] as NSDictionary
-            var anime = item["anime"] as NSDictionary
-            var title = anime["title"] as NSString
-            destViewController.navigationItem.title = title
-        }
     }
+    */
 }
