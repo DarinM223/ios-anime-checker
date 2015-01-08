@@ -8,17 +8,33 @@
 
 import UIKit
 
-class AnimeViewController: UIViewController {
+class AnimeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var episodeLabel: UILabel!
+    @IBOutlet weak var episodeStepper: UIStepper!
     @IBOutlet weak var watchingPicker: UIPickerView!
     
     var episodeText: String?
+    
+    var _pickerData = [
+        "Currently Watching",
+        "Plan to Watch",
+        "Completed",
+        "On Hold",
+        "Dropped",
+        "Remove from Library"
+    ]
+    
+    var selectedRow = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         episodeLabel.text = episodeText
+        self.watchingPicker.dataSource = self;
+        self.watchingPicker.delegate = self;
+        
+        self.watchingPicker.selectRow(selectedRow, inComponent: 0, animated: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,25 +49,20 @@ class AnimeViewController: UIViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
+    // # of columns
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
-//    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-//        return 1.0
-//    }
-//    
-//    func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-//        return 1.0
-//    }
-//    
-//    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-//        return ""
-//    }
-//    
-//    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-//        return NSAttributedString();
-//    }
-//    
-//    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//    }
+    // # of rows
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return _pickerData.count
+    }
+    
+    // text for row
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return _pickerData[row]
+    }
     
     /*
     // MARK: - Navigation

@@ -318,7 +318,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="7Xf-Xh-GKh">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="7Xf-Xh-GKh">
                                 <rect key="frame" x="210" y="72" width="94" height="29"/>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="23/24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNi-Q3-aWl">
@@ -327,14 +327,14 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Episodes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7C-vc-up2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Episodes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7C-vc-up2">
                                 <rect key="frame" x="16" y="78" width="76" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V1c-42-LYu">
-                                <rect key="frame" x="89" y="123" width="143" height="162"/>
+                                <rect key="frame" x="16" y="109" width="288" height="162"/>
                                 <connections>
                                     <outlet property="delegate" destination="ubY-zs-c8Q" id="X2O-50-edJ"/>
                                 </connections>
@@ -342,18 +342,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="V1c-42-LYu" firstAttribute="trailing" secondItem="NYF-tt-ceg" secondAttribute="trailingMargin" id="1IF-jk-xgd"/>
                             <constraint firstItem="k7C-vc-up2" firstAttribute="top" secondItem="dNP-bB-sJw" secondAttribute="bottom" constant="14" id="2jh-9U-cHR"/>
+                            <constraint firstItem="V1c-42-LYu" firstAttribute="leading" secondItem="NYF-tt-ceg" secondAttribute="leadingMargin" id="48f-OT-ysh"/>
                             <constraint firstItem="k7C-vc-up2" firstAttribute="leading" secondItem="NYF-tt-ceg" secondAttribute="leadingMargin" id="6Lp-qt-pDl"/>
                             <constraint firstItem="7Xf-Xh-GKh" firstAttribute="trailing" secondItem="NYF-tt-ceg" secondAttribute="trailingMargin" id="7uQ-np-6QK"/>
-                            <constraint firstItem="V1c-42-LYu" firstAttribute="leading" secondItem="NYF-tt-ceg" secondAttribute="leadingMargin" constant="73" id="BRu-9C-wkK"/>
                             <constraint firstItem="7Xf-Xh-GKh" firstAttribute="top" secondItem="dNP-bB-sJw" secondAttribute="bottom" constant="8" id="CO9-ny-kco"/>
                             <constraint firstItem="7Xf-Xh-GKh" firstAttribute="trailing" secondItem="NYF-tt-ceg" secondAttribute="trailingMargin" id="FQp-cK-tDT"/>
                             <constraint firstItem="V1c-42-LYu" firstAttribute="top" secondItem="PNi-Q3-aWl" secondAttribute="bottom" constant="22" id="I7g-Mu-7qd"/>
                             <constraint firstItem="PNi-Q3-aWl" firstAttribute="top" secondItem="dNP-bB-sJw" secondAttribute="bottom" constant="12" id="PVj-HS-kN9"/>
+                            <constraint firstItem="GXY-hn-SdC" firstAttribute="top" secondItem="V1c-42-LYu" secondAttribute="bottom" constant="297" id="PXI-gx-TDV"/>
                             <constraint firstItem="PNi-Q3-aWl" firstAttribute="leading" secondItem="k7C-vc-up2" secondAttribute="trailing" constant="8" id="Y9W-tK-T7Y"/>
                             <constraint firstItem="7Xf-Xh-GKh" firstAttribute="trailing" secondItem="NYF-tt-ceg" secondAttribute="trailingMargin" id="kDP-gV-SlF"/>
                             <constraint firstItem="7Xf-Xh-GKh" firstAttribute="leading" secondItem="PNi-Q3-aWl" secondAttribute="trailing" constant="22" id="n18-aO-JhO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="V1c-42-LYu" secondAttribute="trailing" constant="72" id="zlY-oT-u6M"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Anime Detail" id="ZWG-Lw-Aya">
@@ -366,7 +367,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="episodeLabel" destination="PNi-Q3-aWl" id="plu-gK-FfZ"/>
-                        <outlet property="watchingPicker" destination="V1c-42-LYu" id="Man-6V-mR6"/>
+                        <outlet property="episodeStepper" destination="7Xf-Xh-GKh" id="ofy-ar-guK"/>
+                        <outlet property="watchingPicker" destination="V1c-42-LYu" id="iNg-KN-vFI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="raq-ca-IXp" userLabel="First Responder" sceneMemberID="firstResponder"/>

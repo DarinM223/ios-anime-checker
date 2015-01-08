@@ -17,7 +17,6 @@ class AnimeListTableViewController: UITableViewController {
     var activityView: UIView?
     var mainNavController: UINavigationController?
     
-    
     func refreshAnimeList() {
         window?.addSubview(activityView!)
         self.activityView?.subviews[0].startAnimating()
@@ -132,7 +131,19 @@ class AnimeListTableViewController: UITableViewController {
         var title = anime["title"] as NSString
         var numEpisodesWatched = item["episodes_watched"] as Int
         
+        var watchingStatus: String = item["status"] as String
+        var watchingIndex: Int
+        
         var destViewController = storyboard?.instantiateViewControllerWithIdentifier("AnimeDetail") as AnimeViewController
+        
+        switch watchingStatus {
+            case "currently-watching": watchingIndex = 0
+            case "plan-to-watch": watchingIndex = 1
+            case "completed": watchingIndex = 2
+            case "on-hold": watchingIndex = 3
+            case "dropped": watchingIndex = 4
+            default: watchingIndex = 1
+        }
         
         if let totalEpisodes = anime["episode_count"] as? Int {
             var totalEpisodesText = String(totalEpisodes)
@@ -141,7 +152,7 @@ class AnimeListTableViewController: UITableViewController {
             destViewController.episodeText = String(numEpisodesWatched) + "/_"
         }
         destViewController.navigationItem.title = title
-        
+        destViewController.selectedRow = watchingIndex
         self.navigationController?.pushViewController(destViewController, animated: true)
     }
     
