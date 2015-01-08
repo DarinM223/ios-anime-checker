@@ -13,6 +13,11 @@ class AnimeListTableViewController: UITableViewController {
     
     var username: String = ""
     var fixture_data: NSArray? = nil
+    
+    var animelist: Animelist?
+    
+    var currently_watching: [LibraryItem]? = nil
+    
     var window:UIWindow?
     var activityView: UIView?
     var mainNavController: UINavigationController?
@@ -20,16 +25,10 @@ class AnimeListTableViewController: UITableViewController {
     func refreshAnimeList() {
         window?.addSubview(activityView!)
         self.activityView?.subviews[0].startAnimating()
-        HummingbirdAPI.getLibrary(self.username){result in
-            if result == nil {
-                // TODO: attempt to load from core data
-                // if no data in core data, sign out
-                var res = AuthenticationToken.removeAuthToken()
-                if res == true {
-                    self.mainNavController?.popToRootViewControllerAnimated(true)
-                }
+        self.animelist?.getList {error in
+            if error == nil {
+                self.currently_watching = self.animelist?.getCurrentlyWatching()
             }
-            self.fixture_data = result
             self.tableView.reloadData()
             self.activityView?.subviews[0].stopAnimating()
             self.activityView?.removeFromSuperview()
@@ -56,7 +55,16 @@ class AnimeListTableViewController: UITableViewController {
                 UIViewAutoresizing.FlexibleBottomMargin)
             
             activityView?.addSubview(spinner)
-            self.refreshAnimeList()
+            window.addSubview(activityView!)
+            self.activityView?.subviews[0].startAnimating()
+            animelist = Animelist(username: self.username) { error in
+                if error == nil {
+                    self.currently_watching = self.animelist?.getCurrentlyWatching()
+                }
+                self.tableView.reloadData()
+                self.activityView?.subviews[0].stopAnimating()
+                self.activityView?.removeFromSuperview()
+            }
         }
     }
     
@@ -85,10 +93,10 @@ class AnimeListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if fixture_data == nil {
+        if currently_watching == nil {
             return 0
         } else {
-            return fixture_data!.count
+            return currently_watching!.count
         }
     }
 
@@ -96,23 +104,21 @@ class AnimeListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as AnimeListCell
 
         // Configure the cell...
-        var item = fixture_data?[indexPath.row] as NSDictionary
-        var anime = item["anime"] as NSDictionary
-        var title = anime["title"] as NSString
-        var numEpisodesWatched = item["episodes_watched"] as Int
         
-        cell.TitleLabel.text = title
-        if let totalEpisodes = anime["episode_count"] as? Int {
-            var totalEpisodesText = String(totalEpisodes)
-            cell.NumAnimeLabel.text = String(numEpisodesWatched) + "/" + totalEpisodesText
-            if numEpisodesWatched < totalEpisodes {
+        var libraryItem:LibraryItem = currently_watching![indexPath.row]
+        
+        cell.TitleLabel.text = libraryItem.anime.title
+        
+        if libraryItem.anime.episode_count != nil {
+            cell.NumAnimeLabel.text = String(libraryItem.episodes_watched) + "/" + String(libraryItem.anime.episode_count!)
+            if libraryItem.episodes_watched < libraryItem.anime.episode_count {
                 cell.IncrementAnimeButton.hidden = false
             } else {
                 cell.IncrementAnimeButton.hidden = true
             }
         } else {
             cell.IncrementAnimeButton.hidden = false
-            cell.NumAnimeLabel.text = String(numEpisodesWatched) + "/_"
+            cell.NumAnimeLabel.text = String(libraryItem.episodes_watched) + "/_"
         }
         
         return cell
@@ -135,17 +141,11 @@ class AnimeListTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var item = fixture_data?[indexPath.row] as NSDictionary
-        var anime = item["anime"] as NSDictionary
-        var title = anime["title"] as NSString
-        var numEpisodesWatched = item["episodes_watched"] as Int
-        
-        var watchingStatus: String = item["status"] as String
         var watchingIndex: Int
-        
         var destViewController = storyboard?.instantiateViewControllerWithIdentifier("AnimeDetail") as AnimeViewController
-        
-        switch watchingStatus {
+        var libraryItem:LibraryItem = currently_watching![indexPath.row]
+
+        switch libraryItem.status {
             case "currently-watching": watchingIndex = 0
             case "plan-to-watch": watchingIndex = 1
             case "completed": watchingIndex = 2
@@ -154,34 +154,17 @@ class AnimeListTableViewController: UITableViewController {
             default: watchingIndex = 1
         }
         
-        if let totalEpisodes = anime["episode_count"] as? Int {
-            var totalEpisodesText = String(totalEpisodes)
-            destViewController.episodeText = String(numEpisodesWatched) + "/" + totalEpisodesText
+        if libraryItem.anime.episode_count != nil {
+            destViewController.episodeText = String(libraryItem.episodes_watched) + "/" + String(libraryItem.anime.episode_count!)
         } else {
-            destViewController.episodeText = String(numEpisodesWatched) + "/_"
+            destViewController.episodeText = String(libraryItem.episodes_watched) + "/_"
         }
-        destViewController.navigationItem.title = title
+        destViewController.navigationItem.title = libraryItem.anime.title
         destViewController.selectedRow = watchingIndex
         self.navigationController?.pushViewController(destViewController, animated: true)
     }
     
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     // MARK: - Navigation
-    
     
     /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
