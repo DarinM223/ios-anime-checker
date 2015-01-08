@@ -135,7 +135,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6na-9u-PRq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="148" y="1040"/>
+            <point key="canvasLocation" x="26" y="1040"/>
         </scene>
         <!--Anime list-->
         <scene sceneID="Jaq-F8-r2Y">
@@ -204,7 +204,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c5G-dX-F5a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="575" y="1184"/>
+            <point key="canvasLocation" x="487" y="1040"/>
         </scene>
         <!--Find anime-->
         <scene sceneID="goR-1x-v1d">
@@ -304,7 +304,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="967" y="364"/>
+            <point key="canvasLocation" x="859" y="364"/>
         </scene>
         <!--Anime Detail-->
         <scene sceneID="Jla-Jw-LHv">
@@ -373,7 +373,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="raq-ca-IXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967" y="1243"/>
+            <point key="canvasLocation" x="859" y="1040"/>
         </scene>
         <!--Account-->
         <scene sceneID="32i-v5-Ikz">
@@ -417,7 +417,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmr-RE-E4s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="458" y="-310"/>
+            <point key="canvasLocation" x="487" y="-310"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ZL6-U9-BsL">

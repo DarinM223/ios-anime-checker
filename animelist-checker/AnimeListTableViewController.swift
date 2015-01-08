@@ -21,6 +21,14 @@ class AnimeListTableViewController: UITableViewController {
         window?.addSubview(activityView!)
         self.activityView?.subviews[0].startAnimating()
         HummingbirdAPI.getLibrary(self.username){result in
+            if result == nil {
+                // TODO: attempt to load from core data
+                // if no data in core data, sign out
+                var res = AuthenticationToken.removeAuthToken()
+                if res == true {
+                    self.mainNavController?.popToRootViewControllerAnimated(true)
+                }
+            }
             self.fixture_data = result
             self.tableView.reloadData()
             self.activityView?.subviews[0].stopAnimating()
@@ -103,6 +111,7 @@ class AnimeListTableViewController: UITableViewController {
                 cell.IncrementAnimeButton.hidden = true
             }
         } else {
+            cell.IncrementAnimeButton.hidden = false
             cell.NumAnimeLabel.text = String(numEpisodesWatched) + "/_"
         }
         
