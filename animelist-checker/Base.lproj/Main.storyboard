@@ -304,7 +304,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="859" y="364"/>
+            <point key="canvasLocation" x="884" y="364"/>
         </scene>
         <!--Anime Detail-->
         <scene sceneID="Jla-Jw-LHv">
@@ -320,6 +320,9 @@
                         <subviews>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="7Xf-Xh-GKh">
                                 <rect key="frame" x="210" y="72" width="94" height="29"/>
+                                <connections>
+                                    <action selector="stepperValueChanged:" destination="ubY-zs-c8Q" eventType="valueChanged" id="tUf-ca-jrl"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="23/24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNi-Q3-aWl">
                                 <rect key="frame" x="100" y="78" width="88" height="23"/>
@@ -373,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="raq-ca-IXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="859" y="1040"/>
+            <point key="canvasLocation" x="884" y="1040"/>
         </scene>
         <!--Account-->
         <scene sceneID="32i-v5-Ikz">

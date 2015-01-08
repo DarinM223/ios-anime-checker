@@ -28,6 +28,18 @@ class AnimeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     var selectedRow = 0
     
+    // new anime parameters
+    var episodes_watched: Int?
+    var status: String?
+    
+    func reload() {
+        if libraryItem!.anime.episode_count != nil {
+            self.episodeLabel.text = String(self.episodes_watched!) + "/" + String(libraryItem!.anime.episode_count!)
+        } else {
+            self.episodeLabel.text = String(self.episodes_watched!) + "/_"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,6 +50,16 @@ class AnimeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
         var watchingIndex = 0
         
+        self.navigationItem.title = libraryItem!.anime.title
+        
+        self.episodeStepper.minimumValue = 0
+        if libraryItem!.anime.episode_count == nil {
+            self.episodeStepper.maximumValue = Double(10000)
+        } else {
+            self.episodeStepper.maximumValue = Double(libraryItem!.anime.episode_count!)
+        }
+        self.episodeStepper.value = Double(libraryItem!.episodes_watched)
+        
         switch libraryItem!.status {
             case "currently-watching": watchingIndex = 0
             case "plan-to-watch": watchingIndex = 1
@@ -47,16 +69,13 @@ class AnimeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             default: watchingIndex = 0
         }
         
-        if libraryItem!.anime.episode_count != nil {
-            self.episodeLabel.text = String(libraryItem!.episodes_watched) + "/" + String(libraryItem!.anime.episode_count!)
-        } else {
-            self.episodeLabel.text = String(libraryItem!.episodes_watched) + "/_"
-        }
-        self.navigationItem.title = libraryItem!.anime.title
-        
+        self.episodes_watched = libraryItem!.episodes_watched
+        self.status = libraryItem!.status
         self.watchingPicker.selectRow(watchingIndex, inComponent: 0, animated: false)
+        
+        self.reload()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -67,6 +86,11 @@ class AnimeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         var animeListController = self.navigationController?.viewControllers[size-2] as AnimeListTableViewController
         animeListController.refreshAnimeList()
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func stepperValueChanged(sender: AnyObject) {
+        self.episodes_watched = Int(self.episodeStepper.value)
+        self.reload()
     }
     
     // # of columns
