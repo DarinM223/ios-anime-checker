@@ -144,23 +144,9 @@ class AnimeListTableViewController: UITableViewController {
         var watchingIndex: Int
         var destViewController = storyboard?.instantiateViewControllerWithIdentifier("AnimeDetail") as AnimeViewController
         var libraryItem:LibraryItem = currently_watching![indexPath.row]
-
-        switch libraryItem.status {
-            case "currently-watching": watchingIndex = 0
-            case "plan-to-watch": watchingIndex = 1
-            case "completed": watchingIndex = 2
-            case "on-hold": watchingIndex = 3
-            case "dropped": watchingIndex = 4
-            default: watchingIndex = 1
-        }
         
-        if libraryItem.anime.episode_count != nil {
-            destViewController.episodeText = String(libraryItem.episodes_watched) + "/" + String(libraryItem.anime.episode_count!)
-        } else {
-            destViewController.episodeText = String(libraryItem.episodes_watched) + "/_"
-        }
-        destViewController.navigationItem.title = libraryItem.anime.title
-        destViewController.selectedRow = watchingIndex
+        destViewController.libraryItem = libraryItem
+
         self.navigationController?.pushViewController(destViewController, animated: true)
     }
     

@@ -13,6 +13,8 @@ class AnimeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @IBOutlet weak var episodeStepper: UIStepper!
     @IBOutlet weak var watchingPicker: UIPickerView!
     
+    var libraryItem: LibraryItem?
+    
     var episodeText: String?
     
     var _pickerData = [
@@ -34,7 +36,25 @@ class AnimeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         self.watchingPicker.dataSource = self;
         self.watchingPicker.delegate = self;
         
-        self.watchingPicker.selectRow(selectedRow, inComponent: 0, animated: false)
+        var watchingIndex = 0
+        
+        switch libraryItem!.status {
+            case "currently-watching": watchingIndex = 0
+            case "plan-to-watch": watchingIndex = 1
+            case "completed": watchingIndex = 2
+            case "on-hold": watchingIndex = 3
+            case "dropped": watchingIndex = 4
+            default: watchingIndex = 0
+        }
+        
+        if libraryItem!.anime.episode_count != nil {
+            self.episodeLabel.text = String(libraryItem!.episodes_watched) + "/" + String(libraryItem!.anime.episode_count!)
+        } else {
+            self.episodeLabel.text = String(libraryItem!.episodes_watched) + "/_"
+        }
+        self.navigationItem.title = libraryItem!.anime.title
+        
+        self.watchingPicker.selectRow(watchingIndex, inComponent: 0, animated: false)
     }
 
     override func didReceiveMemoryWarning() {
