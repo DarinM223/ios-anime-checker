@@ -16,7 +16,11 @@ class AnimeListTableViewController: UITableViewController {
     
     var animelist: Animelist?
     
+    var library: [[LibraryItem]] = []
+    
     var currently_watching: [LibraryItem]? = nil
+    var plan_to_watch: [LibraryItem]? = nil
+    var completed: [LibraryItem]? = nil
     
     var window:UIWindow?
     var activityView: UIView?
@@ -26,12 +30,37 @@ class AnimeListTableViewController: UITableViewController {
         window?.addSubview(activityView!)
         self.activityView?.subviews[0].startAnimating()
         self.animelist?.getList {error in
+            self.library.removeAll(keepCapacity: true)
             if error == nil {
-                self.currently_watching = self.animelist?.getCurrentlyWatching()
+                for var i = 0; i < 5; i++ {
+                    self.library.append(self.getLibraryType(i)!)
+                }
             }
             self.tableView.reloadData()
             self.activityView?.subviews[0].stopAnimating()
             self.activityView?.removeFromSuperview()
+        }
+    }
+    
+    func getLibraryType(index: Int) -> [LibraryItem]? {
+        switch index {
+            case 0: return self.animelist?.getCurrentlyWatching()
+            case 1: return self.animelist?.getPlanToWatch()
+            case 2: return self.animelist?.getOnHold()
+            case 3: return self.animelist?.getCompleted()
+            case 4: return self.animelist?.getDropped()
+            default: return nil
+        }
+    }
+    
+    func getLibraryTitle(index: Int) -> String {
+        switch index {
+            case 0: return "Currently Watching"
+            case 1: return "Plan to Watch"
+            case 2: return "On Hold"
+            case 3: return "Completed"
+            case 4: return "Dropped"
+            default: return ""
         }
     }
     
@@ -58,8 +87,11 @@ class AnimeListTableViewController: UITableViewController {
             window.addSubview(activityView!)
             self.activityView?.subviews[0].startAnimating()
             animelist = Animelist(username: self.username) { error in
+                self.library.removeAll(keepCapacity: true)
                 if error == nil {
-                    self.currently_watching = self.animelist?.getCurrentlyWatching()
+                    for var i = 0; i < 5; i++ {
+                        self.library.append(self.getLibraryType(i)!)
+                    }
                 }
                 self.tableView.reloadData()
                 self.activityView?.subviews[0].stopAnimating()
@@ -87,17 +119,13 @@ class AnimeListTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 1
+        return library.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if currently_watching == nil {
-            return 0
-        } else {
-            return currently_watching!.count
-        }
+        return library[section].count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -105,7 +133,7 @@ class AnimeListTableViewController: UITableViewController {
 
         // Configure the cell...
         
-        var libraryItem:LibraryItem = currently_watching![indexPath.row]
+        var libraryItem:LibraryItem = library[indexPath.section][indexPath.row]
         
         cell.TitleLabel.text = libraryItem.anime.title
         
@@ -122,6 +150,10 @@ class AnimeListTableViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.getLibraryTitle(section)
     }
 
     // Override to support conditional editing of the table view.
@@ -143,7 +175,7 @@ class AnimeListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var watchingIndex: Int
         var destViewController = storyboard?.instantiateViewControllerWithIdentifier("AnimeDetail") as AnimeViewController
-        var libraryItem:LibraryItem = currently_watching![indexPath.row]
+        var libraryItem:LibraryItem = library[indexPath.section][indexPath.row]
         
         destViewController.libraryItem = libraryItem
 
