@@ -8,9 +8,10 @@
 
 import UIKit
 
-class FindAnimeTableViewController: UITableViewController, UISearchBarDelegate, UISearchDisplayDelegate {
+class FindAnimeTableViewController: UITableViewController, UISearchBarDelegate {
     
     var fixture_data: NSArray? = nil
+    var list: [Anime] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,31 +34,64 @@ class FindAnimeTableViewController: UITableViewController, UISearchBarDelegate, 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        if fixture_data == nil {
-            return 0
+        println(self.list.count)
+        return self.list.count
+    }
+    
+    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+        self.tableView.reloadData()
+        return true
+    }
+    
+    func filterSearchText(searchText: String, callback: (Bool) -> Void) {
+        if searchText != "" {
+            HummingbirdAPI.searchAnime(searchText) { result in
+                if result == nil {
+                    callback(false)
+                    self.tableView.reloadData() 
+                } else {
+                    let arr: [AnyObject] = result as [AnyObject]
+                    self.list.removeAll(keepCapacity: true)
+                    
+                    for item:AnyObject in arr {
+                        if let dict:NSDictionary = item as? NSDictionary {
+                            self.list.append(Anime(dict: dict))
+                        }
+                    }
+                    callback(true)
+                }
+            }
         } else {
-            return fixture_data!.count
+            callback(false)
         }
     }
     
-    func filterContentForSearchText(searchText: String) {
-        
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.filterSearchText(searchBar.text) { result in
+            if result == true {
+                self.tableView.reloadData()
+            }
+        }
     }
     
-    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool {
-        self.filterContentForSearchText(searchString)
-        return true
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        self.filterSearchText(searchBar.text) { result in
+            if result == true {
+                self.tableView.reloadData()
+            }
+        }
     }
     
-    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
-        self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
-        return true
-    }
-
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as AnimeListCell
+        
+        
         // Configure the cell...
+        var animeItem = list[indexPath.row]
+        
+        cell.TitleLabel.text = animeItem.title
+        cell.IncrementAnimeButton.hidden = true
+        cell.NumAnimeLabel.text = ""
 
         return cell
     }

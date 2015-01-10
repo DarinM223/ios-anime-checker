@@ -19,7 +19,7 @@ public class Anime {
     let episode_length: Int?
     let cover_image: String
     let synopsis: String
-    let show_type: String
+    let show_type: String?
     let started_airing: NSDate?
     let finished_airing: NSDate?
     let community_rating: Double
@@ -36,7 +36,7 @@ public class Anime {
         self.episode_length = dict["episode_length"] as? Int
         self.cover_image = dict["cover_image"] as String
         self.synopsis = dict["synopsis"] as String
-        self.show_type = dict["show_type"] as String
+        self.show_type = dict["show_type"] as? String
         let dateFormat = NSDateFormatter()
         dateFormat.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
         let started_airing_str = dict["started_airing"] as? String
@@ -70,6 +70,7 @@ public class LibraryItem {
     let rewatching: Bool
     
     init(dict: NSDictionary) {
+        
         self.anime = Anime(dict: dict["anime"] as NSDictionary)
         self.episodes_watched = dict["episodes_watched"] as Int
         let dateFormat = NSDateFormatter()
@@ -95,6 +96,21 @@ public class LibraryItem {
         self.status = dict["status"] as String
         self._private = dict["private"] as Bool
         self.rewatching = dict["rewatching"] as Bool
+    }
+    
+    /// Update parameters for adding a library object that has these properties
+    func updateParams() -> NSDictionary {
+        var params = NSMutableDictionary()
+        params["id"] = self.anime.id
+        params["status"] = self.status
+        params["privacy"] = self._private
+        // params["rating"]
+        // params["sane_rating_update"]
+        params["rewatching"] = self.rewatching
+        params["rewatched_times"] = self.rewatched_times
+        params["notes"] = self.notes
+        params["episodes_watched"] = self.episodes_watched
+        return params
     }
 }
 
@@ -151,15 +167,5 @@ public class Animelist {
         return self.list.filter { item in
             return item.status == "dropped"
         }
-    }
-    
-    func removeAnime(animeid: Int, callback: (NSError?) -> Void) {
-        // send remove request
-        // if error, callback with error, otherwise update list
-    }
-    
-    func updateAnime(updateParams: NSDictionary, callback: (NSError?) -> Void) {
-        // send update request
-        // if error, callback with error, otherwise update list
     }
 }

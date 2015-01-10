@@ -232,30 +232,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="RyM-h3-GvB">
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="HbF-Py-qCo">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
-                                <outlet property="delegate" destination="2vp-wt-QF6" id="MGb-PA-ZBf"/>
+                                <outlet property="delegate" destination="2vp-wt-QF6" id="heo-hN-b6S"/>
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="CdL-OO-Kyr" customClass="AnimeListCell" customModule="animelist_checker" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="8OO-Bs-U1S" customClass="AnimeListCell" customModule="animelist_checker" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CdL-OO-Kyr" id="3e2-XE-oLx">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8OO-Bs-U1S" id="XeV-J4-oVy">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09U-cO-YCj" userLabel="IncrementAnimeButton">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5l-FC-gic" userLabel="IncrementAnimeButton">
                                             <rect key="frame" x="8" y="11" width="22" height="22"/>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kara no kyoukai" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1h-st-dKI" userLabel="TitleLabel">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kara no kyoukai" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ove-TN-tft" userLabel="TitleLabel">
                                             <rect key="frame" x="38" y="11" width="165" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1/8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGC-8u-jNl" userLabel="NumberAnimeLabel">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1/8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W55-6A-OFM" userLabel="NumberAnimeLabel">
                                             <rect key="frame" x="224" y="11" width="55" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -263,21 +263,22 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="09U-cO-YCj" firstAttribute="top" secondItem="3e2-XE-oLx" secondAttribute="topMargin" constant="3" id="3GS-dW-pgI"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="09U-cO-YCj" secondAttribute="bottom" constant="3" id="60y-XC-7XN"/>
-                                        <constraint firstItem="a1h-st-dKI" firstAttribute="top" secondItem="3e2-XE-oLx" secondAttribute="topMargin" constant="3" id="Nl6-E5-d3H"/>
-                                        <constraint firstItem="a1h-st-dKI" firstAttribute="leading" secondItem="3e2-XE-oLx" secondAttribute="leadingMargin" constant="30" id="Ofn-gT-TBT"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="YGC-8u-jNl" secondAttribute="bottom" constant="4" id="YPL-0r-NsL"/>
-                                        <constraint firstItem="09U-cO-YCj" firstAttribute="leading" secondItem="3e2-XE-oLx" secondAttribute="leadingMargin" id="bCL-Ey-YrV"/>
-                                        <constraint firstItem="YGC-8u-jNl" firstAttribute="top" secondItem="3e2-XE-oLx" secondAttribute="topMargin" constant="3" id="dmI-tW-87U"/>
-                                        <constraint firstItem="YGC-8u-jNl" firstAttribute="trailing" secondItem="3e2-XE-oLx" secondAttribute="trailingMargin" id="rIZ-yZ-mhh"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="a1h-st-dKI" secondAttribute="bottom" constant="4" id="sIH-al-eIN"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="a1h-st-dKI" secondAttribute="trailing" constant="76" id="vfd-80-SLm"/>
+                                        <constraint firstItem="I5l-FC-gic" firstAttribute="top" secondItem="XeV-J4-oVy" secondAttribute="topMargin" constant="3" id="1Sf-6S-onf"/>
+                                        <constraint firstItem="I5l-FC-gic" firstAttribute="leading" secondItem="XeV-J4-oVy" secondAttribute="leadingMargin" id="ESg-Mq-HKi"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="I5l-FC-gic" secondAttribute="bottom" constant="3" id="Eyf-01-Iuu"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="W55-6A-OFM" secondAttribute="bottom" constant="4" id="F5x-av-5vK"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Ove-TN-tft" secondAttribute="bottom" constant="4" id="HKK-Y3-VJL"/>
+                                        <constraint firstItem="W55-6A-OFM" firstAttribute="trailing" secondItem="XeV-J4-oVy" secondAttribute="trailingMargin" id="M0v-0f-v5e"/>
+                                        <constraint firstItem="Ove-TN-tft" firstAttribute="leading" secondItem="XeV-J4-oVy" secondAttribute="leadingMargin" constant="30" id="NzY-6t-eWb"/>
+                                        <constraint firstItem="W55-6A-OFM" firstAttribute="top" secondItem="XeV-J4-oVy" secondAttribute="topMargin" constant="3" id="W2A-in-0Gu"/>
+                                        <constraint firstItem="Ove-TN-tft" firstAttribute="top" secondItem="XeV-J4-oVy" secondAttribute="topMargin" constant="3" id="jL1-eg-g2O"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Ove-TN-tft" secondAttribute="trailing" constant="76" id="tPL-dG-oT3"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="NumAnimeLabel" destination="YGC-8u-jNl" id="bTW-HJ-vFz"/>
-                                    <outlet property="TitleLabel" destination="a1h-st-dKI" id="JjC-I8-TiY"/>
+                                    <outlet property="IncrementAnimeButton" destination="I5l-FC-gic" id="cX1-WC-lyo"/>
+                                    <outlet property="NumAnimeLabel" destination="W55-6A-OFM" id="w4v-Xz-mq5"/>
+                                    <outlet property="TitleLabel" destination="Ove-TN-tft" id="bdn-tI-68h"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -290,17 +291,32 @@
                     <navigationItem key="navigationItem" title="Find anime" id="qEL-hG-ca8"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="searchDisplayController" destination="EsW-su-ZfN" id="OS8-xd-bFi"/>
+                        <outlet property="searchDisplayController" destination="emK-Iv-ZFa" id="o8M-LN-URy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOp-Fe-7Kg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="EsW-su-ZfN">
                     <connections>
                         <outlet property="delegate" destination="2vp-wt-QF6" id="0ff-UK-4ms"/>
-                        <outlet property="searchBar" destination="RyM-h3-GvB" id="1A7-WD-U86"/>
                         <outlet property="searchContentsController" destination="2vp-wt-QF6" id="dNb-Zd-1wX"/>
                         <outlet property="searchResultsDataSource" destination="2vp-wt-QF6" id="r47-cc-Yvj"/>
                         <outlet property="searchResultsDelegate" destination="2vp-wt-QF6" id="TJI-4R-Ieo"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="3VB-lr-cPo">
+                    <connections>
+                        <outlet property="delegate" destination="2vp-wt-QF6" id="qJd-7f-pRl"/>
+                        <outlet property="searchContentsController" destination="2vp-wt-QF6" id="iIq-If-qZj"/>
+                        <outlet property="searchResultsDataSource" destination="2vp-wt-QF6" id="iay-kB-FF0"/>
+                        <outlet property="searchResultsDelegate" destination="2vp-wt-QF6" id="OAL-eL-KGA"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="emK-Iv-ZFa">
+                    <connections>
+                        <outlet property="delegate" destination="2vp-wt-QF6" id="BIK-jx-7D3"/>
+                        <outlet property="searchContentsController" destination="2vp-wt-QF6" id="RBa-b5-9aA"/>
+                        <outlet property="searchResultsDataSource" destination="2vp-wt-QF6" id="d6e-kF-qXn"/>
+                        <outlet property="searchResultsDelegate" destination="2vp-wt-QF6" id="Sye-Kg-1Px"/>
                     </connections>
                 </searchDisplayController>
             </objects>

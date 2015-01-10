@@ -31,7 +31,7 @@ public class HummingbirdAPI {
     }
     
     class func searchAnime(search: NSString, callback: (NSArray?) -> Void) {
-        var url: NSURL! = NSURL(string: "http://hummingbird.me/api/v1/search/anime?query=" + search)
+        var url: NSURL! = NSURL(string: "http://hummingbird.me/api/v1/search/anime?query=" + search.stringByReplacingOccurrencesOfString(" ", withString: "+"))
         var request = NSMutableURLRequest(URL: url)
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.currentQueue()) {response, maybeData, error in
@@ -161,6 +161,39 @@ public class HummingbirdAPI {
         }
     }
     
+    class func updateStringFromDictionary(updateParams: NSDictionary, auth_token: String) -> String {
+        // TODO: Implement this
+        var postString = "auth_token=" + auth_token
+        for (key, value) in updateParams {
+            postString += "&\(key)=\(value)"
+        }
+        return postString
+    }
+    
+    class func updateFromLibrary(updateParams: NSDictionary, auth_token: String, callback: (Bool) -> Void) {
+        var postString = updateStringFromDictionary(updateParams, auth_token: auth_token)
+        var animeid: Int = updateParams["id"] as Int!
+        var url: NSURL! = NSURL(string: "http://hummingbird.me/api/v1/libraries/" + String(animeid) + "/remove")
+        
+        var request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.currentQueue()) {response, maybeData, error in
+            if error != nil {
+                callback(false)
+            } else {
+                var res: NSHTTPURLResponse = response as NSHTTPURLResponse
+                switch res.statusCode {
+                    case 200: callback(true)
+                    case 401: callback(false)
+                    case 500: callback(false)
+                    default: callback(false)
+                }
+            }
+        }
+    }
+    
     class func removeFromLibrary(animeid: Int, auth_token: String, callback:(Bool) -> Void) {
         var postString = "auth_token=" + auth_token
         var url: NSURL! = NSURL(string: "http://hummingbird.me/api/v1/libraries/" + String(animeid) + "/remove")
@@ -174,7 +207,12 @@ public class HummingbirdAPI {
                 callback(false)
             } else {
                 var res: NSHTTPURLResponse = response as NSHTTPURLResponse
-                callback(true)
+                switch res.statusCode {
+                    case 200: callback(true)
+                    case 401: callback(false)
+                    case 500: callback(false)
+                    default: callback(false)
+                }
             }
         }
     }
