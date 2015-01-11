@@ -9,8 +9,6 @@
 import UIKit
 
 class FindAnimeTableViewController: UITableViewController, UISearchBarDelegate {
-    
-    var fixture_data: NSArray? = nil
     var list: [Anime] = []
 
     override func viewDidLoad() {
@@ -34,7 +32,6 @@ class FindAnimeTableViewController: UITableViewController, UISearchBarDelegate {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        println(self.list.count)
         return self.list.count
     }
     
@@ -117,6 +114,13 @@ class FindAnimeTableViewController: UITableViewController, UISearchBarDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "showAnimeDetail" {
+            var destViewController = segue.destinationViewController as AnimeDetailViewController
+            var indexPath = self.tableView.indexPathForSelectedRow()
+            var animeItem = list[indexPath!.row]
+            destViewController.anime = animeItem
+        }
     }
 
 }

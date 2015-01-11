@@ -184,6 +184,7 @@
                                     <outlet property="IncrementAnimeButton" destination="jU4-8x-Q1Q" id="Nhy-dD-KnG"/>
                                     <outlet property="NumAnimeLabel" destination="fD8-lB-LN2" id="iB9-WJ-5pz"/>
                                     <outlet property="TitleLabel" destination="Iq8-SW-ecN" id="oRD-WZ-ojK"/>
+                                    <segue destination="ubY-zs-c8Q" kind="show" identifier="showLibraryItem" id="T8w-oK-WYV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -249,14 +250,14 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5l-FC-gic" userLabel="IncrementAnimeButton">
                                             <rect key="frame" x="8" y="11" width="22" height="22"/>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kara no kyoukai" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ove-TN-tft" userLabel="TitleLabel">
-                                            <rect key="frame" x="38" y="11" width="165" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1/8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W55-6A-OFM" userLabel="NumberAnimeLabel">
+                                            <rect key="frame" x="224" y="11" width="55" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1/8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W55-6A-OFM" userLabel="NumberAnimeLabel">
-                                            <rect key="frame" x="224" y="11" width="55" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kara no kyoukai" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ove-TN-tft" userLabel="TitleLabel">
+                                            <rect key="frame" x="38" y="11" width="165" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -279,6 +280,7 @@
                                     <outlet property="IncrementAnimeButton" destination="I5l-FC-gic" id="cX1-WC-lyo"/>
                                     <outlet property="NumAnimeLabel" destination="W55-6A-OFM" id="w4v-Xz-mq5"/>
                                     <outlet property="TitleLabel" destination="Ove-TN-tft" id="bdn-tI-68h"/>
+                                    <segue destination="ADQ-kd-9eg" kind="show" identifier="showAnimeDetail" id="Fxc-sT-a93"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -322,10 +324,10 @@
             </objects>
             <point key="canvasLocation" x="884" y="364"/>
         </scene>
-        <!--Anime Detail-->
+        <!--Library Item Detail-->
         <scene sceneID="Jla-Jw-LHv">
             <objects>
-                <viewController storyboardIdentifier="AnimeDetail" id="ubY-zs-c8Q" customClass="AnimeViewController" customModule="animelist_checker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LibraryItemDetail" id="ubY-zs-c8Q" userLabel="Library Item Detail" customClass="LibraryItemViewController" customModule="animelist_checker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dNP-bB-sJw"/>
                         <viewControllerLayoutGuide type="bottom" id="GXY-hn-SdC"/>
@@ -334,7 +336,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="7Xf-Xh-GKh">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="7Xf-Xh-GKh">
                                 <rect key="frame" x="210" y="72" width="94" height="29"/>
                                 <connections>
                                     <action selector="stepperValueChanged:" destination="ubY-zs-c8Q" eventType="valueChanged" id="tUf-ca-jrl"/>
@@ -346,37 +348,49 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Episodes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7C-vc-up2">
-                                <rect key="frame" x="16" y="78" width="76" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Episodes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7C-vc-up2">
+                                <rect key="frame" x="16" y="78" width="76" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V1c-42-LYu">
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V1c-42-LYu">
                                 <rect key="frame" x="16" y="109" width="288" height="162"/>
                                 <connections>
                                     <outlet property="delegate" destination="ubY-zs-c8Q" id="X2O-50-edJ"/>
                                 </connections>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3P-JX-zWW">
+                                <rect key="frame" x="16" y="481" width="288" height="30"/>
+                                <state key="normal" title="Anime detail">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ADQ-kd-9eg" kind="show" identifier="showAnimeDetail" id="oud-3z-vpp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="V1c-42-LYu" firstAttribute="trailing" secondItem="NYF-tt-ceg" secondAttribute="trailingMargin" id="1IF-jk-xgd"/>
                             <constraint firstItem="k7C-vc-up2" firstAttribute="top" secondItem="dNP-bB-sJw" secondAttribute="bottom" constant="14" id="2jh-9U-cHR"/>
+                            <constraint firstItem="m3P-JX-zWW" firstAttribute="leading" secondItem="NYF-tt-ceg" secondAttribute="leadingMargin" id="3ps-KJ-Edd"/>
                             <constraint firstItem="V1c-42-LYu" firstAttribute="leading" secondItem="NYF-tt-ceg" secondAttribute="leadingMargin" id="48f-OT-ysh"/>
                             <constraint firstItem="k7C-vc-up2" firstAttribute="leading" secondItem="NYF-tt-ceg" secondAttribute="leadingMargin" id="6Lp-qt-pDl"/>
                             <constraint firstItem="7Xf-Xh-GKh" firstAttribute="trailing" secondItem="NYF-tt-ceg" secondAttribute="trailingMargin" id="7uQ-np-6QK"/>
                             <constraint firstItem="7Xf-Xh-GKh" firstAttribute="top" secondItem="dNP-bB-sJw" secondAttribute="bottom" constant="8" id="CO9-ny-kco"/>
                             <constraint firstItem="7Xf-Xh-GKh" firstAttribute="trailing" secondItem="NYF-tt-ceg" secondAttribute="trailingMargin" id="FQp-cK-tDT"/>
+                            <constraint firstItem="m3P-JX-zWW" firstAttribute="trailing" secondItem="NYF-tt-ceg" secondAttribute="trailingMargin" id="HQG-i7-8hP"/>
                             <constraint firstItem="V1c-42-LYu" firstAttribute="top" secondItem="PNi-Q3-aWl" secondAttribute="bottom" constant="22" id="I7g-Mu-7qd"/>
                             <constraint firstItem="PNi-Q3-aWl" firstAttribute="top" secondItem="dNP-bB-sJw" secondAttribute="bottom" constant="12" id="PVj-HS-kN9"/>
                             <constraint firstItem="GXY-hn-SdC" firstAttribute="top" secondItem="V1c-42-LYu" secondAttribute="bottom" constant="297" id="PXI-gx-TDV"/>
                             <constraint firstItem="PNi-Q3-aWl" firstAttribute="leading" secondItem="k7C-vc-up2" secondAttribute="trailing" constant="8" id="Y9W-tK-T7Y"/>
                             <constraint firstItem="7Xf-Xh-GKh" firstAttribute="trailing" secondItem="NYF-tt-ceg" secondAttribute="trailingMargin" id="kDP-gV-SlF"/>
                             <constraint firstItem="7Xf-Xh-GKh" firstAttribute="leading" secondItem="PNi-Q3-aWl" secondAttribute="trailing" constant="22" id="n18-aO-JhO"/>
+                            <constraint firstItem="GXY-hn-SdC" firstAttribute="top" secondItem="m3P-JX-zWW" secondAttribute="bottom" constant="8" id="tIr-WL-2El"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Anime Detail" id="ZWG-Lw-Aya">
+                    <navigationItem key="navigationItem" title="Library Detail" id="ZWG-Lw-Aya">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="ztM-z6-Bex">
                             <connections>
                                 <action selector="onSaveClicked:" destination="ubY-zs-c8Q" id="HOW-zN-25w"/>
@@ -393,6 +407,107 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="raq-ca-IXp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="884" y="1040"/>
+        </scene>
+        <!--Anime Detail-->
+        <scene sceneID="aYq-KZ-6gB">
+            <objects>
+                <viewController storyboardIdentifier="AnimeDetail" id="ADQ-kd-9eg" customClass="AnimeDetailViewController" customModule="animelist_checker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NZr-RQ-aRe"/>
+                        <viewControllerLayoutGuide type="bottom" id="1JR-T9-CFn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jPG-Yf-gse">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1t4-iw-v3S">
+                                <rect key="frame" x="0.0" y="209" width="320" height="302"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show type:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAj-eC-6s6">
+                                <rect key="frame" x="16" y="72" width="86.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TV" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inv-iU-P4B">
+                                <rect key="frame" x="139" y="72" width="165" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="# of episodes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWR-Vr-JLz">
+                                <rect key="frame" x="16" y="101" width="109" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="200" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JV7-K5-bUp">
+                                <rect key="frame" x="139" y="100" width="165" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="episode length:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzu-Af-P4I">
+                                <rect key="frame" x="16" y="130" width="118" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLf-U8-Eal">
+                                <rect key="frame" x="139" y="130" width="165" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1JR-T9-CFn" firstAttribute="top" secondItem="gAj-eC-6s6" secondAttribute="bottom" constant="426" id="0me-Ru-meV"/>
+                            <constraint firstItem="Rzu-Af-P4I" firstAttribute="top" secondItem="NZr-RQ-aRe" secondAttribute="bottom" constant="66" id="0uH-ZZ-p8i"/>
+                            <constraint firstItem="1t4-iw-v3S" firstAttribute="leading" secondItem="jPG-Yf-gse" secondAttribute="leadingMargin" constant="-16" id="1GJ-Em-zLf"/>
+                            <constraint firstItem="1JR-T9-CFn" firstAttribute="top" secondItem="1t4-iw-v3S" secondAttribute="bottom" constant="8" id="3Jt-PB-Kf0"/>
+                            <constraint firstItem="1t4-iw-v3S" firstAttribute="top" secondItem="NZr-RQ-aRe" secondAttribute="bottom" constant="145" id="5Nr-RJ-uVR"/>
+                            <constraint firstItem="inv-iU-P4B" firstAttribute="top" secondItem="NZr-RQ-aRe" secondAttribute="bottom" constant="8" id="8Uu-m6-To8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1t4-iw-v3S" secondAttribute="trailing" constant="-16" id="BFm-aa-BzL"/>
+                            <constraint firstItem="1JR-T9-CFn" firstAttribute="top" secondItem="inv-iU-P4B" secondAttribute="bottom" constant="426" id="ErU-ay-PeL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rzu-Af-P4I" secondAttribute="trailing" constant="170" id="IH7-Vm-2N6"/>
+                            <constraint firstItem="dWR-Vr-JLz" firstAttribute="top" secondItem="NZr-RQ-aRe" secondAttribute="bottom" constant="37" id="KUq-aV-Wtg"/>
+                            <constraint firstItem="wLf-U8-Eal" firstAttribute="leading" secondItem="jPG-Yf-gse" secondAttribute="leadingMargin" constant="123" id="P7V-qW-CyO"/>
+                            <constraint firstItem="1JR-T9-CFn" firstAttribute="top" secondItem="Rzu-Af-P4I" secondAttribute="bottom" constant="368" id="RJv-4w-Moz"/>
+                            <constraint firstItem="JV7-K5-bUp" firstAttribute="top" secondItem="NZr-RQ-aRe" secondAttribute="bottom" constant="36" id="Sbp-nx-9ec"/>
+                            <constraint firstItem="wLf-U8-Eal" firstAttribute="top" secondItem="NZr-RQ-aRe" secondAttribute="bottom" constant="66" id="TOj-2Y-gQi"/>
+                            <constraint firstItem="1JR-T9-CFn" firstAttribute="top" secondItem="JV7-K5-bUp" secondAttribute="bottom" constant="398" id="Z5Y-Jr-CS7"/>
+                            <constraint firstItem="inv-iU-P4B" firstAttribute="trailing" secondItem="jPG-Yf-gse" secondAttribute="trailingMargin" id="aFE-7H-5nt"/>
+                            <constraint firstItem="Rzu-Af-P4I" firstAttribute="leading" secondItem="jPG-Yf-gse" secondAttribute="leadingMargin" id="aqg-Xo-NgM"/>
+                            <constraint firstItem="1JR-T9-CFn" firstAttribute="top" secondItem="wLf-U8-Eal" secondAttribute="bottom" constant="368" id="bb4-dj-5EY"/>
+                            <constraint firstItem="dWR-Vr-JLz" firstAttribute="leading" secondItem="jPG-Yf-gse" secondAttribute="leadingMargin" id="fg7-HQ-Mqq"/>
+                            <constraint firstItem="wLf-U8-Eal" firstAttribute="trailing" secondItem="jPG-Yf-gse" secondAttribute="trailingMargin" id="gTh-S6-SI4"/>
+                            <constraint firstItem="1JR-T9-CFn" firstAttribute="top" secondItem="dWR-Vr-JLz" secondAttribute="bottom" constant="397" id="iUR-mv-ehn"/>
+                            <constraint firstItem="JV7-K5-bUp" firstAttribute="leading" secondItem="dWR-Vr-JLz" secondAttribute="trailing" constant="14" id="mtw-QT-EDm"/>
+                            <constraint firstItem="gAj-eC-6s6" firstAttribute="leading" secondItem="jPG-Yf-gse" secondAttribute="leadingMargin" id="qvz-qg-RpB"/>
+                            <constraint firstItem="inv-iU-P4B" firstAttribute="leading" secondItem="jPG-Yf-gse" secondAttribute="leadingMargin" constant="123" id="rp0-eG-mbx"/>
+                            <constraint firstItem="gAj-eC-6s6" firstAttribute="top" secondItem="NZr-RQ-aRe" secondAttribute="bottom" constant="8" id="uwy-Of-xkx"/>
+                            <constraint firstItem="JV7-K5-bUp" firstAttribute="trailing" secondItem="jPG-Yf-gse" secondAttribute="trailingMargin" id="v9S-sL-Y8M"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Anime Detail" id="Lux-dq-ghD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="HXd-uA-XCX"/>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="detailText" destination="1t4-iw-v3S" id="AbV-17-cq3"/>
+                        <outlet property="episodeLengthLabel" destination="wLf-U8-Eal" id="cf3-dg-jYR"/>
+                        <outlet property="numEpisodesLabel" destination="JV7-K5-bUp" id="nFf-5s-PHO"/>
+                        <outlet property="showTypeLabel" destination="inv-iU-P4B" id="3Jl-rg-vaZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j5r-Rs-gE7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1341" y="735"/>
         </scene>
         <!--Account-->
         <scene sceneID="32i-v5-Ikz">
@@ -461,4 +576,7 @@
             <point key="canvasLocation" x="26" y="364"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="oud-3z-vpp"/>
+    </inferredMetricsTieBreakers>
 </document>

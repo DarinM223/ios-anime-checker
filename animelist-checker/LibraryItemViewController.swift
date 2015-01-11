@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AnimeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class LibraryItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var episodeLabel: UILabel!
     @IBOutlet weak var episodeStepper: UIStepper!
     @IBOutlet weak var watchingPicker: UIPickerView!
@@ -108,14 +108,16 @@ class AnimeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         return _pickerData[row]
     }
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "showAnimeDetail" {
+            var destViewController = segue.destinationViewController as AnimeDetailViewController
+            destViewController.anime = self.libraryItem?.anime
+        }
     }
-    */
 
 }

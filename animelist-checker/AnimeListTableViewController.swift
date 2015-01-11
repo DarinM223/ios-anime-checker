@@ -172,23 +172,28 @@ class AnimeListTableViewController: UITableViewController {
         }    
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var watchingIndex: Int
-        var destViewController = storyboard?.instantiateViewControllerWithIdentifier("AnimeDetail") as AnimeViewController
-        var libraryItem:LibraryItem = library[indexPath.section][indexPath.row]
-        
-        destViewController.libraryItem = libraryItem
-
-        self.navigationController?.pushViewController(destViewController, animated: true)
-    }
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        var watchingIndex: Int
+//        var destViewController = storyboard?.instantiateViewControllerWithIdentifier("LibraryItemDetail") as LibraryItemViewController
+//        var libraryItem:LibraryItem = library[indexPath.section][indexPath.row]
+//        
+//        destViewController.libraryItem = libraryItem
+//
+//        self.navigationController?.pushViewController(destViewController, animated: true)
+//    }
     
     // MARK: - Navigation
     
-    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "showLibraryItem" {
+            var indexPath = self.tableView.indexPathForSelectedRow()
+            var libraryItem:LibraryItem = library[indexPath!.section][indexPath!.row]
+            var destViewController = segue.destinationViewController as LibraryItemViewController
+            destViewController.libraryItem = libraryItem
+        }
     }
-    */
 }
