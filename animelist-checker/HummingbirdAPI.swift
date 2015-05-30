@@ -11,7 +11,7 @@ import CoreData
 
 public class HummingbirdAPI {
     class func requestAnime(anime: NSString, callback: (NSDictionary?) -> Void) {
-        var request = NSMutableURLRequest(URL: NSURL(string: "http://hummingbird.me/api/v1/anime/"+anime)!)
+        var request = NSMutableURLRequest(URL: NSURL(string: "http://hummingbird.me/api/v1/anime/"+(anime as String))!)
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.currentQueue()) {response, maybeData, error in
             if error != nil {
@@ -20,7 +20,7 @@ public class HummingbirdAPI {
             }
             if let data = maybeData {
                 let contents = NSString(data: data, encoding: NSUTF8StringEncoding)
-                var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+                var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
                 callback(jsonResult)
             } else {
                 println(error.localizedDescription)
@@ -58,7 +58,7 @@ public class HummingbirdAPI {
     }
     
     class func getLibrary(user: NSString, callback: (NSArray?) -> Void) {
-        var url: NSURL! = NSURL(string: "http://hummingbird.me/api/v1/users/" + user + "/library")
+        var url: NSURL! = NSURL(string: "http://hummingbird.me/api/v1/users/" + (user as String) + "/library")
         var request = NSMutableURLRequest(URL: url)
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.currentQueue()) {response, maybeData, error in
@@ -72,7 +72,7 @@ public class HummingbirdAPI {
                 var parseError:NSError?
                 
                 let parsedObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parseError)
-                if let finalData:NSArray? = parsedObject as NSArray? {
+                if let finalData:NSArray? = parsedObject as! NSArray? {
                     callback(finalData)
                 } else {
                     println("Error parsing the array!")
@@ -83,7 +83,7 @@ public class HummingbirdAPI {
     }
     
     class func getActivityFeed(username: NSString, callback: (NSArray?) -> Void) {
-        var url: NSURL! = NSURL(string: "http://hummingbird.me/api/v1/users/" + username + "/feed")
+        var url: NSURL! = NSURL(string: "http://hummingbird.me/api/v1/users/" + (username as String)  + "/feed")
         var request = NSMutableURLRequest(URL: url)
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.currentQueue()) {response, maybeData, error in
@@ -97,7 +97,7 @@ public class HummingbirdAPI {
                 var parseError:NSError?
                 
                 let parsedObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parseError)
-                if let finalData:NSArray? = parsedObject as NSArray? {
+                if let finalData:NSArray? = parsedObject as! NSArray? {
                     callback(finalData)
                 } else {
                     println("Error parsing the array!")
@@ -108,7 +108,7 @@ public class HummingbirdAPI {
     }
     
     class func getAccountInfo(username: NSString, callback: (NSDictionary?) -> Void) {
-        var url:NSURL! = NSURL(string: "http://hummingbird.me/api/v1/users/" + username)
+        var url:NSURL! = NSURL(string: "http://hummingbird.me/api/v1/users/" + (username as String))
         var request = NSMutableURLRequest(URL: url)
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.currentQueue()) {response, maybeData, error in
@@ -120,7 +120,7 @@ public class HummingbirdAPI {
             
             if let data = maybeData {
                 let contents = NSString(data: data, encoding: NSUTF8StringEncoding)
-                var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+                var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
                 callback(jsonResult)
                 return
             } else {
@@ -138,9 +138,9 @@ public class HummingbirdAPI {
         request.HTTPMethod = "POST"
         
         if let username = _username as NSString! {
-            postString = "username=" + username + "&password=" + password
+            postString = "username=" + (username as String) + "&password=" + (password as String)
         } else if let email = _email as NSString! {
-            postString = "email=" + email + "&password=" + password
+            postString = "email=" + (email as String) + "&password=" + (password as String)
         } else {
             println("Error!")
             return
@@ -172,7 +172,7 @@ public class HummingbirdAPI {
     
     class func updateFromLibrary(updateParams: NSDictionary, auth_token: String, callback: (Bool) -> Void) {
         var postString = updateStringFromDictionary(updateParams, auth_token: auth_token)
-        var animeid: Int = updateParams["id"] as Int!
+        var animeid: Int = updateParams["id"] as! Int!
         var url: NSURL! = NSURL(string: "http://hummingbird.me/api/v1/libraries/" + String(animeid) + "/remove")
         
         var request = NSMutableURLRequest(URL: url)
@@ -183,7 +183,7 @@ public class HummingbirdAPI {
             if error != nil {
                 callback(false)
             } else {
-                var res: NSHTTPURLResponse = response as NSHTTPURLResponse
+                var res: NSHTTPURLResponse = response as! NSHTTPURLResponse
                 switch res.statusCode {
                     case 200: callback(true)
                     case 401: callback(false)
@@ -206,7 +206,7 @@ public class HummingbirdAPI {
             if error != nil {
                 callback(false)
             } else {
-                var res: NSHTTPURLResponse = response as NSHTTPURLResponse
+                var res: NSHTTPURLResponse = response as! NSHTTPURLResponse
                 switch res.statusCode {
                     case 200: callback(true)
                     case 401: callback(false)

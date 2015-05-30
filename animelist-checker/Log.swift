@@ -36,7 +36,7 @@ public class RemoveAnimeLog : Log {
     func reverse(callback: (Bool) -> Void) {
         var maybe_auth_token = AuthenticationToken.getAuthToken()
         if let auth_token:String = maybe_auth_token {
-            HummingbirdAPI.updateFromLibrary(self.libraryItem.updateParams(), auth_token: auth_token, callback);
+            HummingbirdAPI.updateFromLibrary(self.libraryItem.updateParams(), auth_token: auth_token, callback: callback);
         } else {
             callback(false)
             return
@@ -46,7 +46,7 @@ public class RemoveAnimeLog : Log {
     func apply(callback: (Bool) -> Void) {
         var maybe_auth_token = AuthenticationToken.getAuthToken()
         if let auth_token:String = maybe_auth_token {
-            HummingbirdAPI.removeFromLibrary(self.libraryItem.anime.id, auth_token: auth_token, callback)
+            HummingbirdAPI.removeFromLibrary(self.libraryItem.anime.id, auth_token: auth_token, callback: callback)
         } else {
             callback(false)
             return
@@ -65,7 +65,7 @@ public class UpdateAnimeLog : Log {
     func reverse(callback: (Bool) -> Void) {
         var maybe_auth_token = AuthenticationToken.getAuthToken()
         if let auth_token:String = maybe_auth_token {
-            HummingbirdAPI.updateFromLibrary(self.libraryItem.updateParams(), auth_token: auth_token, callback)
+            HummingbirdAPI.updateFromLibrary(self.libraryItem.updateParams(), auth_token: auth_token, callback: callback)
         } else {
             callback(false)
             return
@@ -75,7 +75,7 @@ public class UpdateAnimeLog : Log {
     func apply(callback: (Bool) -> Void) {
         var maybe_auth_token = AuthenticationToken.getAuthToken()
         if let auth_token:String = maybe_auth_token {
-            HummingbirdAPI.updateFromLibrary(self.updateParams, auth_token: auth_token, callback)
+            HummingbirdAPI.updateFromLibrary(self.updateParams, auth_token: auth_token, callback: callback)
         } else {
             callback(false)
             return

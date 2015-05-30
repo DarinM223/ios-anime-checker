@@ -19,7 +19,7 @@ public class AuthenticationToken {
     /// :param: callback the callback that runs after the code executes
     class func setAuthToken(username: String, password: String, callback: (String?) -> Void) {
         HummingbirdAPI.authenticate(username, _email: nil, password: password) {maybe_auth_token in
-            if let auth_token: String = maybe_auth_token {
+            if let auth_token: String = maybe_auth_token as? String {
                 let data_token: NSData = auth_token.dataUsingEncoding(NSUTF8StringEncoding)!
                 let data_username: NSData = username.dataUsingEncoding(NSUTF8StringEncoding)!
                 let result = Keychain.save("auth_token", data: data_token)
@@ -50,7 +50,7 @@ public class AuthenticationToken {
         var maybeData_username: NSData? = Keychain.load("username")
         if let data_username: NSData = maybeData_username {
             if maybeData_token != nil {
-                if let username:String = NSString(data: data_username, encoding: NSUTF8StringEncoding) {
+                if let username:String = NSString(data: data_username, encoding: NSUTF8StringEncoding)  as? String {
                     return username
                 } else {
                     return nil
@@ -71,7 +71,7 @@ public class AuthenticationToken {
         var maybeData_username: NSData? = Keychain.load("username")
         if let data: NSData = maybeData_token {
             if maybeData_username != nil {
-                if let auth_token:String = NSString(data: data, encoding: NSUTF8StringEncoding) {
+                if let auth_token:String = NSString(data: data, encoding: NSUTF8StringEncoding) as? String {
                     return auth_token
                 } else {
                     return nil

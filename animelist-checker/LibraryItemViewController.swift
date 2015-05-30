@@ -83,7 +83,7 @@ class LibraryItemViewController: UIViewController, UIPickerViewDelegate, UIPicke
 
     @IBAction func onSaveClicked(sender: AnyObject) {
         var size:Int = self.navigationController?.viewControllers.count as Int!
-        var animeListController = self.navigationController?.viewControllers[size-2] as AnimeListTableViewController
+        var animeListController = self.navigationController?.viewControllers[size-2] as! AnimeListTableViewController
         animeListController.refreshAnimeList()
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -115,7 +115,7 @@ class LibraryItemViewController: UIViewController, UIPickerViewDelegate, UIPicke
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "showAnimeDetail" {
-            var destViewController = segue.destinationViewController as AnimeDetailViewController
+            var destViewController = segue.destinationViewController as! AnimeDetailViewController
             destViewController.anime = self.libraryItem?.anime
         }
     }

@@ -28,7 +28,7 @@ class AccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         var delegate = UIApplication.sharedApplication().delegate
         window = delegate?.window as UIWindow!!

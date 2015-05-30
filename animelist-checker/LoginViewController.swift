@@ -40,11 +40,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func onLoginClicked(sender: AnyObject) {
         AuthenticationToken.setAuthToken(usernameField.text, password: passwordField.text) { result in
             if let auth_token:String = result {
-                var tabViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TabBar") as UITabBarController
-                var animeNavViewController = tabViewController.viewControllers?[0] as UINavigationController
-                var accountNavViewController = tabViewController.viewControllers?[1] as UINavigationController
-                var animeListViewController = animeNavViewController.viewControllers[0] as AnimeListTableViewController
-                var accountViewController = accountNavViewController.viewControllers[0] as AccountViewController
+                var tabViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TabBar") as! UITabBarController
+                var animeNavViewController = tabViewController.viewControllers?[0] as! UINavigationController
+                var accountNavViewController = tabViewController.viewControllers?[1] as! UINavigationController
+                var animeListViewController = animeNavViewController.viewControllers[0] as! AnimeListTableViewController
+                var accountViewController = accountNavViewController.viewControllers[0] as! AccountViewController
                 
                 accountViewController.mainNavController = self.navigationController
                 animeListViewController.mainNavController = self.navigationController

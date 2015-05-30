@@ -47,7 +47,7 @@ class FindAnimeTableViewController: UITableViewController, UISearchBarDelegate {
                     callback(false)
                     self.tableView.reloadData() 
                 } else {
-                    let arr: [AnyObject] = result as [AnyObject]
+                    let arr: [AnyObject] = result as! [AnyObject]
                     self.list.removeAll(keepCapacity: true)
                     
                     for item:AnyObject in arr {
@@ -80,7 +80,7 @@ class FindAnimeTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as AnimeListCell
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! AnimeListCell
         
         
         // Configure the cell...
@@ -116,7 +116,7 @@ class FindAnimeTableViewController: UITableViewController, UISearchBarDelegate {
         // Pass the selected object to the new view controller.
         
         if segue.identifier == "showAnimeDetail" {
-            var destViewController = segue.destinationViewController as AnimeDetailViewController
+            var destViewController = segue.destinationViewController as! AnimeDetailViewController
             var indexPath = self.tableView.indexPathForSelectedRow()
             var animeItem = list[indexPath!.row]
             destViewController.anime = animeItem

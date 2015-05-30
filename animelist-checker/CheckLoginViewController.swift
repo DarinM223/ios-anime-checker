@@ -14,18 +14,18 @@ class CheckLoginViewController: UIViewController {
         var data = AuthenticationToken.getAuthToken()
         if data == nil {
             // go to login view
-            var loginViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Login") as LoginViewController
+            var loginViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Login") as! LoginViewController
             self.navigationController?.pushViewController(loginViewController, animated: false)
         } else {
             // extract username and go to anime list view
             var username = AuthenticationToken.getUsername()
             
-            var tabViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TabBar") as UITabBarController
-            var animeNavViewController = tabViewController.viewControllers?[0] as UINavigationController
-            var accountNavViewController = tabViewController.viewControllers?[1] as UINavigationController
+            var tabViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TabBar") as! UITabBarController
+            var animeNavViewController = tabViewController.viewControllers?[0] as! UINavigationController
+            var accountNavViewController = tabViewController.viewControllers?[2] as! UINavigationController
             
-            var animeListViewController = animeNavViewController.viewControllers[0] as AnimeListTableViewController
-            var accountViewController = accountNavViewController.viewControllers[0] as AccountViewController
+            var animeListViewController = animeNavViewController.viewControllers[0] as! AnimeListTableViewController
+            var accountViewController = accountNavViewController.viewControllers[0] as! AccountViewController
             
             accountViewController.mainNavController = self.navigationController
             animeListViewController.mainNavController = self.navigationController

@@ -129,7 +129,7 @@ class AnimeListTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as AnimeListCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! AnimeListCell
 
         // Configure the cell...
         
@@ -192,7 +192,7 @@ class AnimeListTableViewController: UITableViewController {
         if segue.identifier == "showLibraryItem" {
             var indexPath = self.tableView.indexPathForSelectedRow()
             var libraryItem:LibraryItem = library[indexPath!.section][indexPath!.row]
-            var destViewController = segue.destinationViewController as LibraryItemViewController
+            var destViewController = segue.destinationViewController as! LibraryItemViewController
             destViewController.libraryItem = libraryItem
         }
     }

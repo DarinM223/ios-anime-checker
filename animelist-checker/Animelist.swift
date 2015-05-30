@@ -26,16 +26,16 @@ public class Anime {
     let age_rating: String?
     
     init(dict: NSDictionary) {
-        self.id = dict["id"] as Int
-        self.slug = dict["slug"] as String
-        self.status = dict["status"] as String
-        self.url = dict["url"] as String
-        self.title = dict["title"] as String
+        self.id = dict["id"] as! Int
+        self.slug = dict["slug"] as! String
+        self.status = dict["status"] as! String
+        self.url = dict["url"] as! String
+        self.title = dict["title"] as! String
         self.alternate_title = dict["title"] as? String
         self.episode_count = dict["episode_count"] as? Int
         self.episode_length = dict["episode_length"] as? Int
-        self.cover_image = dict["cover_image"] as String
-        self.synopsis = dict["synopsis"] as String
+        self.cover_image = dict["cover_image"] as! String
+        self.synopsis = dict["synopsis"] as! String
         self.show_type = dict["show_type"] as? String
         let dateFormat = NSDateFormatter()
         dateFormat.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
@@ -52,7 +52,7 @@ public class Anime {
         } else {
             self.finished_airing = nil
         }
-        self.community_rating = dict["community_rating"] as Double
+        self.community_rating = dict["community_rating"] as! Double
         self.age_rating = dict["age_rating"] as? String
     }
 }
@@ -71,8 +71,8 @@ public class LibraryItem {
     
     init(dict: NSDictionary) {
         
-        self.anime = Anime(dict: dict["anime"] as NSDictionary)
-        self.episodes_watched = dict["episodes_watched"] as Int
+        self.anime = Anime(dict: dict["anime"] as! NSDictionary)
+        self.episodes_watched = dict["episodes_watched"] as! Int
         let dateFormat = NSDateFormatter()
         dateFormat.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
         let last_watched_str = dict["last_watched"] as? String
@@ -90,12 +90,12 @@ public class LibraryItem {
             self.updated_at = nil
         }
         
-        self.rewatched_times = dict["rewatched_times"] as Int
+        self.rewatched_times = dict["rewatched_times"] as! Int
         self.notes = dict["notes"] as? String
         self.notes_present = dict["notes_present"] as? Bool
-        self.status = dict["status"] as String
-        self._private = dict["private"] as Bool
-        self.rewatching = dict["rewatching"] as Bool
+        self.status = dict["status"] as! String
+        self._private = dict["private"] as! Bool
+        self.rewatching = dict["rewatching"] as! Bool
     }
     
     /// Update parameters for adding a library object that has these properties
@@ -125,7 +125,7 @@ public class Animelist {
                 // if it fails callback with error
             } else {
                 self.list.removeAll(keepCapacity: true)
-                let arr: [AnyObject] = result as [AnyObject]
+                let arr: [AnyObject] = result as! [AnyObject]
                 for item:AnyObject in arr {
                     if let dict:NSDictionary = item as? NSDictionary {
                         self.list.append(LibraryItem(dict: dict))
@@ -134,6 +134,9 @@ public class Animelist {
                 callback(nil)
             }
         }
+    }
+    
+    func addToList(callback: (NSError?) -> Void) {
     }
     
     init(username: String, callback: (NSError?) -> Void) {
